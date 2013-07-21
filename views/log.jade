@@ -1,0 +1,33 @@
+doctype 5
+html
+  head
+    title= title
+    script(src='/nvshen/js/jquery-2.0.0.min.js')
+    link(href='/nvshen/css/log.css', rel='stylesheet')
+    script(src='/nvshen/js/log.js')
+  body
+    div.bg
+      p#title Girls Rank
+      p#wel
+        img(src="/nvshen/img/GR-wel.png")
+      div.button.login
+        div.content
+          p Login and See Your Girls
+          input.play(type="button")
+      div.button.sign
+        div.content
+          p Signup to Save Your Girls
+          input.play(type="button")
+      div.inp.login.hide
+        p Sign in
+        input(name="username", placeholder="Username")
+        input(name="password", type="password", placeholder="Password")
+        button.play
+      div.inp.sign.hide
+        p Sign up
+        input(name="signname", placeholder="Username")
+        input(name="signpass", type="password", placeholder="Password")
+        input(name="signpassrep", type="password", placeholder="Password again")
+        input(name="signnick", placeholder="Nickname")
+        input(name="signmail", placeholder="Email")
+        button.play

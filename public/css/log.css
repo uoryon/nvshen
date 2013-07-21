@@ -1,0 +1,115 @@
+@font-face{
+  font-family: 'cengo';
+  src: url('century-gothic.ttf') format('truetype');
+}
+body, p{
+  margin:0;
+  padding:0;
+}
+.hide{
+  display: none !important;
+}
+.bg{
+  background: url('../img/GR-bg.jpg') no-repeat;
+  margin-top: 100px;
+  height: 500px;
+}
+
+.bg p{
+  text-align: center;
+}
+
+#title{
+  font-family: 'cengo', sans-serif;
+  font-size: 90px;
+  padding-top: 120px;
+  color: #ff6900;
+  transition: padding-top 0.5s;
+}
+
+#wel{
+  margin-top: 45px;
+}
+
+#title.act{
+  padding-top: 50px;
+  transition: padding-top 0.5s;
+}
+
+#wel.act{
+  display: none;
+}
+
+.button{
+  width: 430px;
+  height: 70px;
+  background-color: #ff6900;
+  margin: 0 auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.button.mousemove{
+  background-color: #eb6100;
+}
+
+.content p{
+  display: inline-block;
+  color: white;
+  font-size: 18px;
+  padding: 26px 50px;
+}
+
+.play{
+  padding: 0;
+  margin: 0;
+  border:0;
+  background: url('../img/GR-play.png') no-repeat 26.5px 27.5px;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.content .play{
+  float:right;
+  border-left: 1px solid #ff974c;
+}
+
+.sign{
+  margin-top: 10px;
+}
+
+.inp{
+  height: 260px;
+  width: 380px;
+  margin: 0 auto;
+  margin-top: 55px;
+  background-color: #ff6900;
+  opacity: 0.5;
+}
+
+.inp p{
+  font-size: 24px;
+  color: white;
+  padding-top: 30px;
+}
+
+.inp input{
+  display: block;
+  width: 290px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 20px;
+  text-indent: 15px;
+}
+
+.inp .play{
+  display:block;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.inp.sign {
+  height: 460px;
+}
