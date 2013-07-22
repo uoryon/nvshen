@@ -1,6 +1,6 @@
 $(function(){
   var wWidth = $(window).outerWidth();
-  var pWidth = 1330;
+  var pWidth = 1300;
   $('.bg').css({
     "background-position":wWidth/2 - pWidth/2
   });
@@ -18,18 +18,17 @@ $(function(){
     $(this).removeClass('mousemove');
   })
   $('.button.login .play').click(function(e){
-    $('#title, #wel').addClass('act');
+    $('#title, #wel, .button').addClass('act');
+    $('p.sign').addClass('hide');
     setTimeout(function(){ 
-      $('.button').addClass('hide');
-      $('.inp.login').removeClass('hide');
+      $('.button').slideUp(200);
+      $('#wel').slideUp(200);
+      setTimeout(function(){
+        $('.inp.login').fadeIn();
+      }, 300);
     }, 500);
   })
-  $('.button.sign .play').click(function(e){
-    $('#title, #wel').addClass('act');
-    setTimeout(function(){ 
-      $('.button').addClass('hide');
-      $('.inp.sign').removeClass('hide');
-    }, 500);
+  $('p.sign').click(function(e){
   })
   $('.inp.login > .play').click(function(e){
     var odata = {

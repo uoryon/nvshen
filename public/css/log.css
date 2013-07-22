@@ -90,8 +90,7 @@ p.sign{
   width: 380px;
   margin: 0 auto;
   margin-top: 55px;
-  background-color: #ff6900;
-  opacity: 0.5;
+  background-color: rgba(255, 105, 0, 0.5);
   display:none;
 }
 
