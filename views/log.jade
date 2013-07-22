@@ -7,23 +7,22 @@ html
     script(src='/nvshen/js/log.js')
   body
     div.bg
-      p#title Girls Rank
+      p#title
+        img(src="/nvshen/img/GR-fo.png")
       p#wel
         img(src="/nvshen/img/GR-wel.png")
       div.button.login
         div.content
           p Login and See Your Girls
           input.play(type="button")
-      div.button.sign
-        div.content
-          p Signup to Save Your Girls
-          input.play(type="button")
-      div.inp.login.hide
+      p.sign
+        a 沒有帳號？
+      div.inp.login
         p Sign in
         input(name="username", placeholder="Username")
         input(name="password", type="password", placeholder="Password")
         button.play
-      div.inp.sign.hide
+      div.inp.sign
         p Sign up
         input(name="signname", placeholder="Username")
         input(name="signpass", type="password", placeholder="Password")

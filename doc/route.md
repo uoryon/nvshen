@@ -31,6 +31,15 @@
       - 0 成功
       - 1 網絡失敗
       - 2 用戶名已存在
+    - 接受格式:
+      {
+        uname:,
+        password:,
+        ch:{
+          nick:,
+          email:,
+        }
+      }
   - '/update' 更新用戶信息, ch內容, 調用user.update `POST`
     - 返回值:
       - 0 成功
