@@ -4,7 +4,7 @@ var crypto = require('crypto');
 
 function nvshen(girl){
   this.uname = girl.uname;
-  this.head = girl.head || "/nvshen/pic/"+girl.gname+"/head.png";
+  this.head = girl.head || "/nvshen/pic/"+girl.uname+"/"+girl.gname+"/head.png";
   this.gname = girl.gname;
   this.descri = girl.descri || "";
   this.like = girl.like || 0;
@@ -33,7 +33,7 @@ nvshen.prototype = {
         collection.ensureIndex('gname', {'unique':'true'});
         collection.insert(ogirl, {safe:true}, function(err, girl){
           mongodb.close();
-          callback(err, girl);
+          callback(err, girl[0]);
         })
       })
     });
@@ -190,13 +190,14 @@ nvshen.getAll = function(username, callback){
     if(err){
       return callback(err);
     }
-    db.collection('nvshen', function(err, collection){
+    db.collection('girl', function(err, collection){
       if(err){
         mongodb.close();
         return callback(err);
       }
-      collection.find({"uname":username}, function(err, doc){
+      collection.find({"uname":username}).toArray(function(err, doc){
         mongodb.close();
+        //return doc.toArray(callback);
         return callback(err, doc);
       });
     });

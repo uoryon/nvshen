@@ -7,7 +7,7 @@ html
     script(src='/nvshen/js/me.js')
     script(src='/nvshen/js/Girl.js')
     script(src='/nvshen/js/uiHand.js')
-    script(src='/nvshen/js/nvshen.js') 
+    script(src='/nvshen/js/nvshen.js')
   body
     div.wraper
       div.header
@@ -28,15 +28,12 @@ html
             input.like(type="button")
             input.dislike(type="button")
             input.hate(type="button")
-    div.filter
-    div.alert
-      div.close
-      div.arrow
-    div.add
+    div.add.hide
       div.main
-        div.colse
+        div.close
+          div.cross
         div.head
-          canvas
+          canvas(height=80, width=80)
           input(type='file')
         div.gname
           input(type='text')

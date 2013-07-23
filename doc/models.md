@@ -94,9 +94,10 @@
 - 也用作通信, 不存儲信息
 
 - 實例方法:
-  - fill:function(odata) 向'./upGirl'POST數據, 目的: 添加女孩
+  - upGirl:function(odata) 向'./upGirl'POST數據, 目的: 添加女孩
   - hg: function(odata) 向'./hg'POST數據, 目的: 操作好感, tf3個狀態
   - up: function(odata) 向'./up'POST數據, 目的: 上傳女生相片
   - sp: function(odata) 向'./sp'POST數據, 目的: 添加對她說的話
   - gg: function(odata) 向'./gg'POST數據, 目的: 獲取已經上傳的圖片
   - gp: function(odata) 向'./gp'POST數據, 目的: 獲取已經說過的話
+  - ga: function(odata)

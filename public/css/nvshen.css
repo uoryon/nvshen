@@ -9,6 +9,36 @@ div{
   display: block;
 }
 
+.hide{
+  display: none;
+}
+
+.sample{
+  display: none;
+}
+
+.close{
+	-webkit-border-radius: 12px 13px 13px 12px/13px 13px 12px 12px;
+	-moz-border-radius: 12px 13px 13px 12px/13px 13px 12px 12px;
+	border-radius: 12px 13px 13px 12px/13px 13px 12px 12px;
+	background-color: #fff;
+	-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.11);
+	-moz-box-shadow: 1px 2px 3px rgba(0,0,0,.11);
+	box-shadow: 1px 2px 3px rgba(0,0,0,.11);
+	border: solid 1px #bfbfbf;
+	background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
+	background-image: -moz-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
+	background-image: -o-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
+	background-image: linear-gradient(to top, rgba(0,0,0,.06), rgba(0,0,0,0));
+}
+
+.close .cross{
+  background: url('../img/GR-cross.png') no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
 .wraper{
   max-width: 1000px;
   min-width: 500px;
@@ -66,6 +96,7 @@ p.name img{
 .girlone{
   width: 100%;
   height: 86px;
+  margin-bottom: 40px;
 }
 
 .girlone > *{
@@ -127,6 +158,7 @@ p.name img{
   width: 295px;
   position: absolute;
   z-index: 2;
+  top: 170px;
 }
 
 .add > *{
@@ -140,26 +172,41 @@ p.name img{
   box-shadow: 0 0 8px rgba(0, 0, 0, .5);
 }
 
+.main .close{
+  width: 25px;
+  height: 25px;
+  float: right;
+  position: relative;
+  top: -12.5px;
+  left: 12.5px;
+}
+
+.main .close .cross{
+  background-position:6px 6px;
+  width: 100%;
+  height: 100%; 
+}
+
 .main .head{
   margin-top: 30px;
 }
 
 .main .head canvas{
-  width: 90px;
-  height: 90px;
-  border-radius:90px;
-  -webkit-border-radius:90px;
-  -moz-border-radius:90px;
+  width: 80px;
+  height: 80px;
+  border-radius:80px;
+  -webkit-border-radius:80px;
+  -moz-border-radius:80px;
   position:absolute;
   z-index: 2;
 }
 
 .main .head input{
-  width: 90px;
-  height: 90px;
-  border-radius:90px;
-  -webkit-border-radius:90px;
-  -moz-border-radius:90px;
+  width: 80px;
+  height: 80px;
+  border-radius:80px;
+  -webkit-border-radius:80px;
+  -moz-border-radius:80px;
   position:absolute;
   z-index: 3;
   opacity: .01;
@@ -183,6 +230,7 @@ p.name img{
   width: 85px;
   font-size: 20px;
   background-color: transparent;
+  color: white;
 }
 
 
@@ -198,6 +246,18 @@ p.name img{
   border: 0;
   outline: 0;
   resize: none;
+  width: 225px;
+  height: 45px;
+  padding: 13px;
+  border-right: 1px solid #ffa363;
+  color: white;
+}
+
+.detai input{
+  background: url('../img/GR-edit.png') no-repeat;
+  height: 71px;
+  width: 43px;
+  background-position: 12px;
 }
 
 .setting, .logout{
@@ -224,4 +284,42 @@ p.name img{
   color: white;
   padding-top: 11px;
   padding-left: 52px;
+}
+
+.alert{
+  background-color: #f7505a;
+  position: absolute;
+  z-index: 10;
+  height: 50px;
+}
+
+.alert .close{
+  width: 17px;
+  height: 17px;
+  float: right;
+  position: relative;
+  top: -8.5px;
+  left: 8.5px;
+}
+
+.alert .arrow{
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 8px 13.9px 8px 0;
+  border-color: transparent #f7505c transparent transparent;
+  position: absolute;
+  left: -13px;
+  top: 17px;
+}
+
+.alert .close .cross{
+  background-position: 2px;
+}
+
+.alert p{
+  padding: 17px;
+  padding-right: 0px;
+  display: inline-block;
+  color: white;
 }

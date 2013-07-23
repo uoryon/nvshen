@@ -2,34 +2,25 @@ function Girl(girl){
 }
 
 Girl.prototype = {
-  fill:function(odata){
-    $.post('./upGirl', odata, function(data){
-      console.log(data);
-    });
+  upGirl:function(odata, callback){
+    $.post('./upGirl', odata, callback);
   },
-  hg:function(odata){
-    $.post('./hg', odata, function(data){
-      console.log(data);
-    })
+  hg:function(odata, callback){
+    $.post('./hg', odata, callback);
   },
-  up:function(odata){
-    $.post('./up', odata, function(data){
-      console.log(data);
-    })
+  up:function(odata, callback){
+    $.post('./up', odata, callback);
   },
-  sp:function(odata){
-    $.post('./sp', odata, function(data){
-      console.log(data);
-    })
+  sp:function(odata, callback){
+    $.post('./sp', odata, callback);
   },
-  gg:function(odata){
-    $.post('./gg', odata, function(data){
-      console.log(data);
-    })
+  gg:function(odata, callback){
+    $.post('./gg', odata, callback);
   },
-  gp:function(odata){
-    $.post('./gp', odata, function(data){
-      console.log(data);
-    })
+  gp:function(odata, callback){
+    $.post('./gp', odata, callback);
+  },
+  ga:function(callback){
+    $.get('./ga', callback);
   }
 }

@@ -63,6 +63,12 @@
       - 0 成功
       - 1 網絡或數據等庫問題
       - 2 失敗, 已經存在女孩
+    - 接收数据:
+      {
+        gname:,
+        picurl:,
+        descri:
+      }
   - '/hg' 操作好感, 先Nvshen.get後, 使用nvshen.hg `POST`
     - 返回值:
       - 0 成功

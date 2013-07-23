@@ -1,6 +1,7 @@
 var Nvshen = require('../models/nvshen');
 var canvas = require('canvas');
 var pic = require('../models/pic');
+var fs = require('fs');
 
 exports.upGirl = function(req, res){
   Nvshen.exist(req.session.user.uname, req.body.gname, function(err){
@@ -8,14 +9,15 @@ exports.upGirl = function(req, res){
       return res.send({status:2, reason:'女孩已存在'})
     }
     else{
+      req.body.uname = req.session.user.uname;
       var nN = new Nvshen(req.body);
       nN.add(req.session.user.uname, function(data, girl){
         if(err){
           return res.send({status:1, reason:'網絡失敗'});
         }
-        fs.mkdirSycn(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname);
+        fs.mkdirSync(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname);
         var oP = new pic(req.body.picurl);
-        pic.save(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname+'/head.png', function(data){
+        oP.save(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname+'/head.png', function(data){
           return res.send({status:0, reason:'成功', 'girl':girl});
         })
       })
