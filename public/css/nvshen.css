@@ -113,7 +113,7 @@ p.name img{
   width: auto;
 }
 
-.des p{
+p{
   word-break:break-all;
 }
 
@@ -323,3 +323,123 @@ p.name img{
   display: inline-block;
   color: white;
 }
+
+
+.moredetail{
+  width:1000px;
+  margin: 0 auto;
+}
+
+.moredetail > *{
+  float: left;
+	-webkit-box-shadow: 0 0 8px rgba(0,0,0,.5);
+	-moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
+	box-shadow: 0 0 8px rgba(0,0,0,.5);
+}
+
+.speak{
+  width: 225px; 
+}
+
+.speak .close{
+  width: 19px;
+  height: 19px;
+  float: right;
+  position:relative;
+  top: -10px;
+  left: 10px;
+}
+
+.speak .close .cross{
+  background-position: 3px;
+}
+
+.nhead{
+  height: 90px;
+  background-color: #ff6900;
+}
+
+.nhead p{
+  font-size: 20px;
+  padding: 14px;
+  text-align: center;
+  text-indent: 15px;
+}
+
+.nhead .girl{
+  display: block;
+  height: 85px;
+  width: 85px;
+  margin-left: 70px;
+  border: 5px solid white;
+  border-radius: 85px;
+  background-color: #ff6900;
+}
+
+.splist{
+  min-height: 238px;
+  margin: 0 auto;
+  margin-top: 75px;
+  width: 190px;
+}
+
+.splist .spco{
+  padding:7px 0px;
+  border-top: 2px solid #d7d7d7;
+}
+
+
+
+.splist .spco:first-child{
+  border-top: 0px solid #d7d7d7;
+}
+
+.slmore{
+  height:48px;
+  background-color: #ff6900;
+}
+
+.show{
+  margin-left: 10px;
+  width: 765px;
+  height: 440px;
+}
+
+.spart{
+  height: 360px;
+  width: 745px;
+  padding:10px;
+  padding-bottom: 0px;
+}
+
+.mpart{
+  height: 38px;
+}
+
+#fir{
+  float:left;
+}
+
+#sec{
+  margin:0 auto;
+}
+
+.showbig{
+  float: right;
+}
+
+.bpart{
+  height: 43px;
+  background-color: #303030;
+}
+
+
+
+
+
+
+
+
+
+
+
