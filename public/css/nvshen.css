@@ -328,6 +328,7 @@ p{
 .moredetail{
   width:1000px;
   margin: 0 auto;
+  position: absolute;
 }
 
 .moredetail > *{

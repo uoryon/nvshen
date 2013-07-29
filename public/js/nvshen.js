@@ -18,7 +18,7 @@ $(function(){
                 </div>";
         $('.list').append($that);
       }
+      var uihelp = new uiHand();
     }
   })
-  var uihelp = new uiHand();
 });

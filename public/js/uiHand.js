@@ -47,6 +47,13 @@ function uiHand(){
     $(".logout").click(function(e){
       location.href = 'logout';
     });
-
+    $(".girlone>img").click(function(e){
+      if($(".moredetail").hasClass("hide")){
+        $('.moredetail').removeClass("hide");
+      }
+      else{
+        $('.moredetail').addClass("hide");
+      }
+    })
   })();
 }
