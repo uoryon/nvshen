@@ -108,7 +108,7 @@ exports.gp = function(req, res){
 exports.ga = function(req, res){
   Nvshen.getAll(req.session.user.uname, function(err, data){
     if(err){
-      res.send({status:1, reason:"網絡錯誤"});
+      return res.send({status:1, reason:"網絡錯誤"});
     }
     if(data){
       res.send({status:0, reason:"獲取成功", girl:data});
@@ -120,5 +120,26 @@ exports.ga = function(req, res){
 }
 
 exports.gd = function(req, res){
-  Nvshen.get
+  Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
+    if(err){
+      return res.send({status:1, reason:"網絡錯誤"});
+    }
+    if(girl){
+      var eGirl = girl;
+      eGirl.gp(0, function(err, speak){
+        if(err){
+          return res.send({status:1, reason:"網絡錯誤"});
+        }
+        eGirl.gg(function(err, gal){
+          if(err){
+            return res.send({status:1, reason:"網絡錯誤"});
+          }
+          res.send({status:0, "speak":speak, "gal":gal});
+        })
+      })
+    }
+    else{
+      res.send({status:2, reason:"已經存在女孩"})
+    }
+  })
 }

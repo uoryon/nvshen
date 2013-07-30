@@ -123,9 +123,27 @@ nvshen.prototype = {
           mongodb.close();
           return callback(err);
         }
-        collection.find({"uname":self.uname, "gname":self.gname}, function(err, doc){
+        collection.find({"uname":self.uname, "gname":self.gname}).toArray(function(err, doc){
           mongodb.close();
           callback(err, doc);
+        })
+      })
+    })
+  },
+  gp:function(start, callback){
+      var self = this;
+      mongodb.open(function(err, db){
+      if(err){
+        callback(err);
+      }
+      db.collection('speaktoher', function(err,collection){
+        if(err){
+          mongodb.close();
+          return callback(err);
+        }
+        collection.find({"uname":self.uname,"gname":self.gname}).toArray(function(err, doc){
+          mongodb.close();
+          callback(doc);
         })
       })
     })
@@ -179,7 +197,8 @@ nvshen.get = function(username, girlname, callback){
         return callback(err);
       }
       collection.findOne({"uname":username, "gname":girlname}, function(err, doc){
-      
+        mongodb.close();
+        return callback(err, doc);
       })
     })
   })
@@ -204,22 +223,5 @@ nvshen.getAll = function(username, callback){
   })
 }
 
-nvshen.gp = function(username, girlname, start, callback){
-  mongodb.open(function(err, db){
-    if(err){
-      callback(err);
-    }
-    db.collection('speaktoher', function(err,collection){
-      if(err){
-        mongodb.close();
-        return callback(err);
-      }
-      collection.find({"uname":username,"gname":girlname}, function(err, doc){
-        mongodb.close();
-        callback(doc);
-      })
-    })
-  })
-}
 
 module.exports = nvshen;

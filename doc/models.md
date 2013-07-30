@@ -48,13 +48,13 @@
   - add: function(username, callback) 將女孩插入user的文檔結構裏面, 回調函數返回(err[, girl])
   - hg: function(tf, callback) tf = type, hg = haogan , 處理好感的函數
   - up: function(odata, callback) 調用pic, 把女生頭像存入文件系統
-  - gg: function(callback) gg = get gallery 獲得相冊圖片
   - sp: function(odata, callback) speaktoher 寫入speak
+  - gp: function(start, callback) 獲取get speak, start是限制
+  - gg: function(callback) gg = get gallery 獲得相冊圖片
 - 類方法:
   - exist: function(username, girlname, callback) 查找是否存在
   - get: function(username, girlname, callback) 依據user, 取出特定女孩的詳細內容, 回調函數返回(err[, girl]);
   - getAll: function(username, callback) 依據user, 取出所有女孩簡單信息, 回調函數返回(err[, girls]);
-  - gp: function(username, girlname, start, callback) 獲取get speak, start是限制
 
 ####Pic類
 

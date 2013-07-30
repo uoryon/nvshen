@@ -18,7 +18,7 @@ module.exports = function(app){
   app.post('/hg', ns.hg);
   app.post('/up', ns.up);
   app.post('/sp', ns.sp);
-  app.get('/gd', ns.gd);
+  app.post('/gd', ns.gd);
   app.get('/gg', ns.gg);
   app.get('/gp', ns.gp);
   app.get('/ga', ns.ga);
