@@ -255,6 +255,7 @@ p{
 }
 
 .detai input{
+  float: right;
   background: url('../img/GR-edit.png') no-repeat;
   height: 71px;
   width: 43px;
