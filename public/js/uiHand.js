@@ -1,5 +1,11 @@
 function uiHand(){
   this.hand = (function(){
+    /*==============css==============*/
+    $('.moredetail').css({
+      left:$(window).outerWidth()/2 - $(".moredetail").outerWidth()/2 + "px",
+      top:$(window).outerHeight()/2 - $(".moredetail").outerHeight()/2 + "px",
+    })
+    /*==============handler==========*/
     $(".add .close").click(function(e){
       $('.filter').remove();
       $('.add').addClass('hide');
@@ -48,12 +54,17 @@ function uiHand(){
       location.href = 'logout';
     });
     $(".girlone>img").click(function(e){
-      if($(".moredetail").hasClass("hide")){
+      var odata = {
+        girlname:$(this).attr('id')
+      }
+      girl.gd(odata, function(){
+        $('body').append('<div class="filter"></div>');
         $('.moredetail').removeClass("hide");
-      }
-      else{
-        $('.moredetail').addClass("hide");
-      }
+      });
+    })
+    $(".moredetail .close").click(function(e){
+      $('.moredetail').addClass("hide");
+      $(".filter").remove();
     })
   })();
 }

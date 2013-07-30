@@ -22,5 +22,8 @@ Girl.prototype = {
   },
   ga:function(callback){
     $.get('./ga', callback);
+  },
+  gd:function(odata, callback){
+    $.get('./gd', odata, callback);
   }
 }

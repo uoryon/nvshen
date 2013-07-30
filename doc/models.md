@@ -100,4 +100,5 @@
   - sp: function(odata) 向'./sp'POST數據, 目的: 添加對她說的話
   - gg: function(odata) 向'./gg'POST數據, 目的: 獲取已經上傳的圖片
   - gp: function(odata) 向'./gp'POST數據, 目的: 獲取已經說過的話
-  - ga: function(odata)
+  - ga: function(odata) 向'./ga'GET數據, 目的: 獲取所有女生
+  - gd: function(odata) 向'./gd'GET數據, 目的: 獲取該女生的一切

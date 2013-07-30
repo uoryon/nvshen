@@ -31,6 +31,7 @@ div{
 	background-image: -o-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
 	background-image: -ms-linear-gradient(bottom, rgba(0,0,0,.06), rgba(0,0,0,0));
 	background-image: linear-gradient(to top, rgba(0,0,0,.06), rgba(0,0,0,0));
+  cursor: pointer;
 }
 
 .close .cross{
@@ -329,6 +330,7 @@ p{
   width:1000px;
   margin: 0 auto;
   position: absolute;
+  z-index:2;
 }
 
 .moredetail > *{
@@ -336,6 +338,7 @@ p{
 	-webkit-box-shadow: 0 0 8px rgba(0,0,0,.5);
 	-moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
 	box-shadow: 0 0 8px rgba(0,0,0,.5);
+  background-color: white;
 }
 
 .speak{

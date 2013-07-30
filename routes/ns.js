@@ -74,6 +74,9 @@ exports.sp = function(req, res){
         }
       })
     }
+    else{
+      res.send({status:2, reason:"女孩不存在"})
+    }
   });
 }
 
@@ -114,4 +117,8 @@ exports.ga = function(req, res){
       res.send({status:2, reason:"沒有女孩"})
     }
   });
+}
+
+exports.gd = function(req, res){
+  Nvshen.get
 }
