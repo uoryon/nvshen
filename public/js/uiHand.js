@@ -54,6 +54,32 @@ function uiHand(){
     $(".setting").click(function(e){
       $(".changee").addClass("active");
     })
+    $(".changee .headiconup input").change(function(e){
+      file = e.target.files[0];
+      reader = new FileReader();
+      reader.onload = function(e){
+        $img = $('<img>', {src:e.target.result});
+        canvas = $('.changee .headiconup canvas')[0];
+        ct = canvas.getContext('2d');
+
+        $img.load(function(){
+          ct.drawImage(this, 0, 0, 80, 80);
+        });
+      }
+      reader.readAsDataURL(file);
+    });
+    $(".changee .play").click(function(e){
+      var odata = {
+        picurl:$('.changee .headiconup canvas')[0].toDataURL(),
+        ch:{
+          nick:$('.changee .upnick').val(),
+          emial:$('.changee .upemail')
+        }
+      }
+      me.update(odata, function(data){
+      
+      })
+    })
     $(".logout").click(function(e){
       location.href = 'logout';
     });

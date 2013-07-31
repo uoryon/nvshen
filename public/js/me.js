@@ -2,9 +2,8 @@ function Me(){
 }
 
 Me.prototype = {
-  update:function(odata){
-    $.post('./update', odata, function(data){
-    })
+  update:function(odata, callback){
+    $.post('./update', odata, callback)
   },
   uphead:function(odata){
     $.post('./uphead', odata, function(data){

@@ -44,6 +44,14 @@
     - 返回值:
       - 0 成功
       - 1 網絡失敗
+    - 接受數據:
+      {
+        picurl:
+        ch:{
+            nick:
+            email:
+           }
+      }
   - '/uphead' 更新用戶頭像, 調用user.uphead `POST`
     - 返回值:
       - 0 成功
