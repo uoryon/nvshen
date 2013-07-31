@@ -7,7 +7,8 @@
   ch:{ //可以更改的內容
     nick,
     birthday,
-    email
+    email,
+    op
   },
   unch:{ //不可以更改的內容
     regtime

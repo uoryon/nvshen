@@ -40,14 +40,16 @@ nvshen.prototype = {
   },
   hg:function(tf, callback){
     var self = this;
-    if(tf == 'inc' || tf= 'dec'){
+    var loc = 0;
+    if(tf == 'inc' || tf == 'dec'){
       if(tf == 'inc'){
         this.plike*=1.2;
-        this.like += plike;
+        this.like += this.plike;
       }
       else {
         this.plike*=1.2;
-        this.like -= plike;
+        this.like -= this.plike;
+        if(this.like<0) this.like = 0;
       }
       mongodb.open(function(err, db){
         if(err){
@@ -59,6 +61,17 @@ nvshen.prototype = {
             return callback(err);
           }
           collection.update({"uname":self.uname, "gname":self.gname},{$set:{"like":self.like, "plike":self.plike}}, function(err){
+            loc = 1;
+            callback(err);
+          });
+        })
+        db.collection('silencer', function(err, collection){
+          if(err){
+            mongodb.close();
+            return callback(err);
+          }
+          collection.update({"uname":self.uname}, {$set:{"op":1}}, function(err){
+            while(!loc){}
             mongodb.close();
             callback(err);
           });
@@ -75,6 +88,16 @@ nvshen.prototype = {
             return callback(err);
           }
           collection.remove({"uname":self.uname,"gname":self.gname}, function(err){
+            loc = 1;
+            callback(err);
+          })
+        })
+        db.collection('silencer', function(err, collection){
+          if(err){
+            return callback(err);
+          }
+          collection.update({"uname":self.uname}, {$push:{"hates":self.gname}}, function(err){
+            while(!loc){}
             mongodb.close();
             callback(err);
           })

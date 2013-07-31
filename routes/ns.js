@@ -2,6 +2,7 @@ var Nvshen = require('../models/nvshen');
 var canvas = require('canvas');
 var pic = require('../models/pic');
 var fs = require('fs');
+var User = require('../models/user');
 
 exports.upGirl = function(req, res){
   Nvshen.exist(req.session.user.uname, req.body.gname, function(err){
@@ -26,16 +27,30 @@ exports.upGirl = function(req, res){
 }
 
 exports.hg = function(req, res){
-  Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
-    if(err){
+  User.hged(req.session.user.uname, function(err, op){
+    if(op == 1 && req.body.f != 'hat'){
+      res.send({status:3, reason:"今天操作了"});
     }
-    if(girl){
-      var eGirl = girl;
-      eGirl.hg(req.body.f, function(data){
-        res.send(data);
-      })
-    }
-  })
+    Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
+      if(err){
+        res.send({status:1, reason:"網絡錯誤"});
+      }
+      if(girl){
+        var eGirl = new Nvshen(girl);
+        eGirl.hg(req.body.f, function(err){
+          if(err){
+            res.send({status:1, reason:"網絡錯誤"});
+          }
+          else{
+            res.send({status:0, reason:"操作成功"});
+          }
+        })
+      }
+      else{
+        res.send({status:2, reason:"不存在她"});
+      }
+    })
+  });
 }
 
 exports.up = function(req, res){
@@ -44,7 +59,7 @@ exports.up = function(req, res){
       return res.send({status:1, reason:"網絡失敗"});
     }
     if(girl){
-      var eGirl = girl;
+      var eGirl = new Nvshen(girl);
       eGirl.up(req.body, function(err, girl){
         if(err){
           if(err.status == 2)res.send(err);
@@ -64,7 +79,7 @@ exports.sp = function(req, res){
       return res.send({status:1, reason:"網絡失敗"});
     }
     if(girl){
-      var eGirl = girl;
+      var eGirl = new Nvshen(girl);
       eGirl.sp(req.body, function(data){
         if(err){
           res.send({status:1, reason:"網絡錯誤"});
@@ -86,7 +101,7 @@ exports.gg = function(req, res){
       return res.send({status:1, reason:"網絡失敗"});
     }
     if(girl){
-      var eGirl = girl;
+      var eGirl = new Nvshen(girl);
       eGirl.gg(function(err, data){
         res.send(data);
       })
@@ -125,7 +140,7 @@ exports.gd = function(req, res){
       return res.send({status:1, reason:"網絡錯誤"});
     }
     if(girl){
-      var eGirl = girl;
+      var eGirl = new Nvshen(girl);
       eGirl.gp(0, function(err, speak){
         if(err){
           return res.send({status:1, reason:"網絡錯誤"});

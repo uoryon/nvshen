@@ -25,5 +25,19 @@ Girl.prototype = {
   },
   gd:function(odata, callback){
     $.post('./gd', odata, callback);
+  },
+  appTo:function(doc, girl){
+    $that = "<div class='girlone'>\
+              <img id='"+girl.gname+"' src='"+girl.head+"'>\
+              <div class='des'>\
+                <p>"+girl.gname+", "+girl.descri+"</p>\
+              </div>\
+              <div class='mani'>\
+                <input class='like' type='button'>\
+                <input class='dislike' type='button'>\
+                <input class='hate' type='button'>\
+              </div>\
+            </div>";
+    doc.append($that);
   }
 }

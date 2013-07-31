@@ -9,6 +9,8 @@ function User(user){
     nick: user.ch.nick || user.uname,
     birthday:user.ch.birthday || 0,
     email:user.ch.email||"",
+    op: user.ch.op||"",
+    hates:user.ch.hates||{}
   };
   this.unch = user.unch && {
     regtime: user.unch.regtime || 0
@@ -123,6 +125,22 @@ User.login = function(user, callback){
         else{
           callback(err, null);
         }
+      });
+    });
+  });
+}
+
+User.hged = function(username, callback){
+  mongodb.open(function(err, db){
+    db.collection('silencer', function(err, collection){
+      if(err){
+        mongodb.close();
+        return callback(err);
+      }
+      collection.findOne({uname:username, password:user.password}, function(err, doc){
+        mongodb.close();
+        console.log(err);
+        callback(err, doc.op);
       });
     });
   });

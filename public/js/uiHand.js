@@ -44,18 +44,22 @@ function uiHand(){
         if(data.status == 0){
           $('.add').addClass('hide');
           $('.filter').remove();
+          $('.changee').removeClass('active');
           $('.add .head input').val("");
           $('.gname input').val("");
           $('.detai textarea').val("");
         } 
       });
     })
+    $(".setting").click(function(e){
+      $(".changee").addClass("active");
+    })
     $(".logout").click(function(e){
       location.href = 'logout';
     });
     $(".girlone>img").click(function(e){
       var odata = {
-        girlname:$(this).attr('id')
+        gname:$(this).attr('id')
       }
       girl.gd(odata, function(){
         $('body').append('<div class="filter"></div>');
@@ -65,6 +69,39 @@ function uiHand(){
     $(".moredetail .close").click(function(e){
       $('.moredetail').addClass("hide");
       $(".filter").remove();
+    })
+    $(".like").click(function(e){
+      var odata = {
+        f:'inc',
+        gname:$(this).parent().parent().children('img').attr('id')
+      }
+      girl.hg(odata, function(data){
+        if(data.status == 0){
+        
+        }
+      })
+    })
+    $(".dislike").click(function(e){
+      var odata = {
+        f:'dec',
+        gname:$(this).parent().parent().children('img').attr('id')
+      }
+      girl.hg(odata, function(data){
+        if(data.status == 0){
+        
+        }
+      })
+    })
+    $(".hate").click(function(e){
+      var odata = {
+        f:'hat',
+        gname:$(this).parent().parent().children('img').attr('id')
+      }
+      girl.hg(odata, function(data){
+        if(data.status == 0){
+        
+        }
+      })
     })
   })();
 }
