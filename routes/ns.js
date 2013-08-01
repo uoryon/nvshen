@@ -27,7 +27,7 @@ exports.upGirl = function(req, res){
 }
 
 exports.hg = function(req, res){
-  User.hged(req.session.user.uname, function(err, op){
+  User.hged(req.session.user, function(err, op){
     if(op == 1 && req.body.f != 'hat'){
       res.send({status:3, reason:"今天操作了"});
     }

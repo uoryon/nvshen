@@ -2,6 +2,11 @@ body, p{
   margin:0;
   padding:0;
 }
+
+.al{
+  position:absolute;
+}
+
 .hide{
   display: none !important;
 }
@@ -117,5 +122,14 @@ p.sign{
 }
 
 .inp.sign {
-  height: 460px;
+  width: 740px;
+}
+
+.inp.sign > input{
+  margin: 10px;
+  float: left;
+}
+
+.inp.sign .play{
+  margin-top: 64px;
 }

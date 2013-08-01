@@ -131,14 +131,14 @@ User.login = function(user, callback){
   });
 }
 
-User.hged = function(username, callback){
+User.hged = function(user, callback){
   mongodb.open(function(err, db){
     db.collection('silencer', function(err, collection){
       if(err){
         mongodb.close();
         return callback(err);
       }
-      collection.findOne({uname:username, password:user.password}, function(err, doc){
+      collection.findOne({uname:user.uname, password:user.password}, function(err, doc){
         mongodb.close();
         console.log(err);
         callback(err, doc.op);

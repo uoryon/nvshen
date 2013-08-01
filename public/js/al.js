@@ -3,7 +3,7 @@
 
 function al(message, help, po){
   this.content = message;
-  $text = $('<div class="alert">\
+  $text = $('<div class="alert al">\
               <div class="close">\
                 <div class="cross">\
                 </div>\
@@ -15,11 +15,14 @@ function al(message, help, po){
   if(help){
     $('.arrow').remove();
   }
-  $('.alert').css({
-    top: position.y,
-    left: position.x
+  $('.al').css({
+    top: po.y,
+    left: po.x
   });
-  $('.close').click(function(e){
-    $('.alert').remove();
+  $('.al .cross').click(function(e){
+    $('.al').remove();
   });
+  //setTimeout(function(){
+  //  $('al').fadeOut();
+  //}, 2000);
 }

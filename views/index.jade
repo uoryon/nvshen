@@ -4,6 +4,7 @@ html
     title= title
     link(rel='stylesheet', href='/nvshen/css/nvshen.css')
     script(src='/nvshen/js/jquery-2.0.0.min.js')
+    script(src='/nvshen/js/al.js')
     script(src='/nvshen/js/me.js')
     script(src='/nvshen/js/Girl.js')
     script(src='/nvshen/js/uiHand.js')
@@ -12,10 +13,10 @@ html
     div.wraper
       div.header
         div.head
-          img(alt="點擊更新信息")
+          img(alt="點擊更新信息", src=head)
         p.name
           img.nl(src='/nvshen/img/GR-line.png')
-          span.cname 蘇海
+          span.cname= nick
           img.nr(src='/nvshen/img/GR-line.png')
       div.bar
         input.cen(type="button")
@@ -42,7 +43,7 @@ html
           input(type='button')
       div.changee
         div.headiconup
-          canvas
+          canvas(height=80, width=80)
           a(href='javascript:void(0)') 點擊上傳頭像
             input(type='file', value='點擊上傳頭像')
         div.ch

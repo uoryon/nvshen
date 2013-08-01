@@ -9,6 +9,10 @@ div{
   display: block;
 }
 
+.al{
+  position: absolute;
+}
+
 .hide{
   display: none;
 }
@@ -111,11 +115,18 @@ p.name img{
 
 .des{
   height: 86px;
-  width: auto;
+  width: 680px;
+  margin-left: 25px;
+  margin-right: 50px;
 }
 
-p{
+.des p{
   word-break:break-all;
+  color: #acd598;
+}
+
+.des p:hover{
+  color: #9abe88;
 }
 
 .mani{

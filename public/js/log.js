@@ -60,6 +60,12 @@ $(function(){
       }
     }
     $.post('./signup', odata, function(data){
+      if(data.status == 0){
+        $('.inp.sign').fadeOut(500);
+        setTimeout(function(){
+          $('.inp.login').fadeIn();
+        }, 500)
+      }
     })
   });
 })

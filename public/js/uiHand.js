@@ -40,6 +40,9 @@ function uiHand(){
         picurl:$('.add .head canvas')[0].toDataURL(),
         descri:$('.detai textarea').val()
       }
+      if(odata.descri == "" || odata.gname == "" || odata.picurl == ""){
+        return false;
+      }
       girl.upGirl(odata, function(data){
         if(data.status == 0){
           $('.add').addClass('hide');
@@ -52,7 +55,12 @@ function uiHand(){
       });
     })
     $(".setting").click(function(e){
-      $(".changee").addClass("active");
+      if($(".changee").hasClass("active")){
+        $(".changee").removeClass("active");
+      }
+      else{
+        $(".changee").addClass("active");
+      }
     })
     $(".changee .headiconup input").change(function(e){
       file = e.target.files[0];
