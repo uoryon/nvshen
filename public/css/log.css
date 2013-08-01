@@ -99,6 +99,10 @@ p.sign{
   display:none;
 }
 
+.inp.hover{
+  background-color: rgba(235, 97, 0, 0.5);
+}
+
 .inp p{
   font-size: 24px;
   color: white;

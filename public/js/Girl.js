@@ -26,10 +26,11 @@ Girl.prototype = {
   gd:function(odata, callback){
     $.post('./gd', odata, callback);
   },
-  appTo:function(doc, girl){
+  appTo:function(doc, i, girl){
     $that = "<div class='girlone'>\
-              <img id='"+girl.gname+"' src='"+girl.head+"'>\
-              <div class='des'>\
+              <img id='"+girl.gname+"' src='"+girl.head+"'>";
+    if(i <= 3) $that += "<div class='ranked'>"+i+"</div>";
+    $that += "<div class='des'>\
                 <p>"+girl.gname+", "+girl.descri+"</p>\
               </div>\
               <div class='mani'>\

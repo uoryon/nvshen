@@ -39,6 +39,12 @@ $(function(){
       }, 300);
     }, 500);
   })
+  $('.inp > .play').mouseover(function(e){
+    $('.inp').addClass('hover');
+  })
+  $('.inp > .play').mouseout(function(e){
+    $('.inp').removeClass('hover');
+  })
   $('.inp.login > .play').click(function(e){
     var odata = {
       uname:$('input[name="username"]').val(),

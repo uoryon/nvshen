@@ -8,7 +8,11 @@ $(function(){
         return b.like - a.like;
       });
       for(var i = 0; i < data.girl.length; i++){
-        girl.appTo($('.list'), data.girl[i]);
+        var rankk = "";
+        if(i <= 2) {
+          rankk = i+1;
+        }
+        girl.appTo($('.list'), rankk, data.girl[i]);
       }
       var uihelp = new uiHand();
     }
