@@ -29,6 +29,15 @@ $(function(){
     }, 500);
   })
   $('p.sign').click(function(e){
+    $('#title, #wel, .button').addClass('act');
+    $('p.sign').addClass('hide');
+    setTimeout(function(){ 
+      $('.button').slideUp(200);
+      $('#wel').slideUp(200);
+      setTimeout(function(){
+        $('.inp.sign').fadeIn();
+      }, 300);
+    }, 500);
   })
   $('.inp.login > .play').click(function(e){
     var odata = {
