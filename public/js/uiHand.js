@@ -73,11 +73,11 @@ function uiHand(){
         picurl:$('.changee .headiconup canvas')[0].toDataURL(),
         ch:{
           nick:$('.changee .upnick').val(),
-          emial:$('.changee .upemail')
+          emial:$('.changee .upemail').val()
         }
       }
       me.update(odata, function(data){
-      
+        console.log(data);
       })
     })
     $(".logout").click(function(e){

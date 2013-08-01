@@ -52,12 +52,16 @@ exports.logout = function(req, res){
   res.redirect('/nvshen');
 }
 exports.update = function(req, res){
-  req.session.user.update(req.body.ch, function(err){
+  var eUser = new User(req.session.user);
+  eUser.update(req.body.ch, function(err){
     if(err){
       res.send({status:1, reason:"更新失敗"});
     }
     else{
-      res.send({status:0, reason:"更新成功"})
+      //res.send({status:0, reason:"更新成功"})
+      eUser.uphead(req.body.picurl, function(err){
+        res.send({status:0, reason:"allokey"});
+      })
     }
   })
 }

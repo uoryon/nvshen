@@ -62,8 +62,9 @@ User.prototype = {
     });
   },
   uphead:function(picurl, callback){
+    var self = this;
     var oPic = new pic(picurl);
-    oPic.save(__dirname+'/../public/pic/'+req.session.user.uname+'/head.png', function(err){
+    oPic.save(__dirname+'/../public/pic/'+self.uname+'/head.png', function(err){
       callback(err);  
     })
   },

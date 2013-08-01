@@ -278,8 +278,8 @@ p{
   z-index: -1;
   top: 30px;
   background-color: #566;
-  width: 190px;
-  height: 230px;
+  /*width: 190px;
+  height: 230px;*/
 	-webkit-box-shadow: 0 0 8px rgba(0,0,0,.5);
 	-moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
 	box-shadow: 0 0 8px rgba(0,0,0,.5);
@@ -290,6 +290,70 @@ p{
 .changee.active{
   transition: left 1s;
   left: 290px;
+}
+
+.changee canvas{
+  display: none;
+}
+
+.headiconup{
+  height: 30px;
+  width: 100px;
+}
+
+.headiconup a{
+  position: absolute;
+	left: 17px;
+	top: 7px;
+	width: 100px;
+	height: 24px;
+	border: 1px solid #aaa;
+	text-align: center;
+	background: #ddd;
+	line-height: 24px;
+	cursor: pointer;
+	overflow: hidden;
+	color: #888;
+	border-radius: 4px;
+	text-decoration: none;
+}
+.headiconup a:hover
+{
+	background: #eee;
+	color:#000;
+	border-color: #444;
+	text-decoration: none;
+}
+.headiconup input
+{
+	filter:alpha(opacity=0);
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top:0;
+	width: 200px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.ch{
+  margin: 10px;
+}
+
+.ch input{
+  margin-bottom: 6px;
+}
+
+.changee .play{
+  padding: 0;
+  margin: 0 auto;
+  border:0;
+  background: url('../img/GR-play.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .setting{
