@@ -12,8 +12,12 @@ function al(message, help, po){
               <p>'+message+'</p>\
             </div>');
   $('body').append($text);
-  if(help){
+  if(!help){
     $('.arrow').remove();
+  }
+  if(po.type == 'cemi'){
+    po.x = ($(window).outerWidth()-$('.al').outerWidth())/2;
+    po.y = ($(window).outerHeight()-$('.al').outerHeight())/2;
   }
   $('.al').css({
     top: po.y,
@@ -26,3 +30,4 @@ function al(message, help, po){
   //  $('al').fadeOut();
   //}, 2000);
 }
+

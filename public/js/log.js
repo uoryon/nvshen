@@ -60,10 +60,19 @@ $(function(){
     var odata = {
       uname: $('input[name="signname"]').val(),
       password:$('input[name="signpass"]').val(),
+      passagain:$('input[name="signpassrep"]').val(),
       ch:{
         nick:$('input[name="signnick"]').val(),
         email:$('input[name="signmail"]').val()
       }
+    }
+    if(odata.uname == "" || odata.password == "" || odata.passagain == ""){
+      var lala = new al("至少把用戶名和密碼填上嘛~", false, {type : 'cemi'})
+      return false;
+    }
+    if(odata.password != odata.passagain){
+      var lala = new al("兩次密碼不一樣呀~", false, {type : 'cemi'})
+      return false;
     }
     $.post('./signup', odata, function(data){
       if(data.status == 0){
@@ -71,6 +80,10 @@ $(function(){
         setTimeout(function(){
           $('.inp.login').fadeIn();
         }, 500)
+      }
+      else{
+        var lala = new al("服務器君貌似罷工了，請稍後再試", false, {type : 'cemi'})
+        return false;
       }
     })
   });

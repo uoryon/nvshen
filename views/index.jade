@@ -13,13 +13,13 @@ html
     div.wraper
       div.header
         div.head
-          img(alt="點擊更新信息", src=head)
+          img(title='你的頭像，設置中更新', alt="點擊更新信息", src=head)
         p.name
           img.nl(src='/nvshen/img/GR-line.png')
-          span.cname= nick
+          span.cname(title='你得暱稱喲')= nick
           img.nr(src='/nvshen/img/GR-line.png')
       div.bar
-        input.cen(type="button")
+        input.cen(type="button", title='點擊添加女生')
       div.list
         div.girlone.sample
           img
@@ -62,6 +62,7 @@ html
         div.nhead
           p
           img.girl
+          p(contentEditable='true')
         div.splist
           div.spco
             p sample

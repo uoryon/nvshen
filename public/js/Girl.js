@@ -34,9 +34,9 @@ Girl.prototype = {
                 <p>"+girl.gname+", "+girl.descri+"</p>\
               </div>\
               <div class='mani'>\
-                <input class='like' type='button'>\
-                <input class='dislike' type='button'>\
-                <input class='hate' type='button'>\
+                <input class='like' type='button' >\
+                <input class='dislike' type='button' >\
+                <input class='hate' type='button' >\
               </div>\
             </div>";
     doc.append($that);

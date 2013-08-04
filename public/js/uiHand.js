@@ -41,6 +41,7 @@ function uiHand(){
         descri:$('.detai textarea').val()
       }
       if(odata.descri == "" || odata.gname == "" || odata.picurl == ""){
+        var lala = new al("把名字和描述填上嘛， 目前添加后不可修改哦。。", false, {type:'cemi'});
         return false;
       }
       girl.upGirl(odata, function(data){
@@ -51,6 +52,7 @@ function uiHand(){
           $('.add .head input').val("");
           $('.gname input').val("");
           $('.detai textarea').val("");
+          var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false, {type:'cemi'});
         } 
       });
     })
@@ -85,7 +87,7 @@ function uiHand(){
         }
       }
       me.update(odata, function(data){
-        console.log(data);
+        var lala = new al("更新信息成功了，信息發生變化時， 請儘快告訴服務器君哦。", false, {'type':'cemi'});
       })
     })
     $(".logout").click(function(e){
@@ -95,9 +97,12 @@ function uiHand(){
       var odata = {
         gname:$(this).attr('id')
       }
+      var uImg = $(this).attr('src');
       girl.gd(odata, function(){
         $('body').append('<div class="filter"></div>');
         $('.moredetail').removeClass("hide");
+        $('.moredetail .nhead p').text(odata.gname);
+        $('.moredetail .nhead img').attr('src', uImg);
       });
     })
     $(".moredetail .close").click(function(e){
@@ -111,7 +116,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-        
+          var lala = new al("操作成功啦", false, {'type':'cemi'});
+        }
+        else if(data.status == 3){
+          var lala = new al("一天只能對一個進行操作喲~", false, {'type':'cemi'});
+        }
+        else{
+          var lala = new al("出錯啦", false, {'type':'cemi'});
         }
       })
     })
@@ -122,7 +133,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-        
+          var lala = new al("操作成功啦", false, {'type':'cemi'});
+        }
+        else if(data.status == 3){
+          var lala = new al("一天只能對一個進行操作喲~", false, {'type':'cemi'});
+        }
+        else{
+          var lala = new al("出錯啦", false, {'type':'cemi'});
         }
       })
     })
@@ -133,7 +150,10 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-        
+          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false, {'type':'cemi'});
+        }
+        else{
+          var lala = new al("出錯啦", false, {'type':'cemi'});
         }
       })
     })
