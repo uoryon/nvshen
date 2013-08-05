@@ -80,6 +80,8 @@ exports.sp = function(req, res){
     }
     if(girl){
       var eGirl = new Nvshen(girl);
+      req.body.uname = req.session.user.uname;
+      req.body.date = new Date().getTime();
       eGirl.sp(req.body, function(data){
         if(err){
           res.send({status:1, reason:"網絡錯誤"});

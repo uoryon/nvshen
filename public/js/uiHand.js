@@ -98,16 +98,48 @@ function uiHand(){
         gname:$(this).attr('id')
       }
       var uImg = $(this).attr('src');
-      girl.gd(odata, function(){
-        $('body').append('<div class="filter"></div>');
-        $('.moredetail').removeClass("hide");
-        $('.moredetail .nhead p').text(odata.gname);
-        $('.moredetail .nhead img').attr('src', uImg);
+      girl.gd(odata, function(data){
+        if(data.status == 0){
+          $('body').append('<div class="filter"></div>');
+          $('.moredetail').removeClass("hide");
+          $('.moredetail .nhead p').text(odata.gname);
+          $('.moredetail .nhead img').attr('src', uImg);
+          for(var i = 0; i < data.speak.length; i++){
+            var $text = "<div class='spco'><p>"+data.speak[i].content+"</p></div>";
+            $('.splist .text').after($text);
+          }
+        }
       });
     })
     $(".moredetail .close").click(function(e){
       $('.moredetail').addClass("hide");
       $(".filter").remove();
+    })
+    $(".moredetail .nhead img").click(function(e){
+      $('.splist .text').slideDown();
+    })
+    $(".splist .endtext").click(function(e){
+      var odata = {
+        content:$('.splist .text textarea').val(),
+        gname: $(this).parents().siblings(".nhead").children('p').text()
+      }
+      $('.splist .text textarea').val("");
+      if(odata.content == ""){
+        return false;
+      }
+      else{
+        girl.sp(odata, function(data){
+          if(data.status == 0){
+            var $text = "<div class='spco' style='display:none'><p>"+odata.content+"</p></div>";
+            $(".splist .text").after($text);
+            $(".splist .spco").fadeIn(500);
+            $('.splist .text').slideUp();
+          }
+          else{
+            var lala = new al("失敗啦~", false, 'cemi');
+          }
+        });
+      }
     })
     $(".like").click(function(e){
       var odata = {

@@ -476,6 +476,7 @@ p.name img{
   padding: 14px;
   text-align: center;
   text-indent: 15px;
+  color: white;
 }
 
 .nhead .girl{
@@ -488,12 +489,37 @@ p.name img{
   background-color: #ff6900;
 }
 
+
 .splist{
   min-height: 238px;
   margin: 0 auto;
   margin-top: 75px;
   width: 190px;
 }
+
+.splist .text{
+  display: none;
+  position: relative;
+}
+
+.splist .text textarea{
+  width: 190px;
+  resize: none;
+  background-color: #ff6900;
+  margin: 0 auto;
+  outline: none;
+  border: 0;
+  color: white;
+}
+
+.splist .endtext{
+  background: url('../img/GR-endtext.png') no-repeat;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  left: 180px;
+  top: 20px;
+} 
 
 .splist .spco{
   padding:7px 0px;
@@ -502,7 +528,7 @@ p.name img{
 
 
 
-.splist .spco:first-child{
+.splist .spco:nth-child(2){
   border-top: 0px solid #d7d7d7;
 }
 

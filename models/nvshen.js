@@ -166,7 +166,7 @@ nvshen.prototype = {
         }
         collection.find({"uname":self.uname,"gname":self.gname}).toArray(function(err, doc){
           mongodb.close();
-          callback(doc);
+          callback(err, doc);
         })
       })
     })
