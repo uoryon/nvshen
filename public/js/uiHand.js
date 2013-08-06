@@ -14,11 +14,14 @@ function uiHand(){
       $('.detai textarea').val("");
     })
     $(".cen").click(function(e){
-      $('body').append('<div class="filter"></div>');
       $('.add').css({
         left: $(window).outerWidth()/2 - 295/2 + 'px'
       });
       $('.add').removeClass('hide');
+      $('body').append('<div class="filter"></div>');
+      $(".filter").css({
+        "height":$(document).outerHeight() + "px"
+      })
     })
     $(".add .head input").change(function(e){
       file = e.target.files[0];
@@ -100,7 +103,6 @@ function uiHand(){
       var uImg = $(this).attr('src');
       girl.gd(odata, function(data){
         if(data.status == 0){
-          $('body').append('<div class="filter"></div>');
           $('.moredetail').removeClass("hide");
           $('.moredetail .nhead p').text(odata.gname);
           $('.moredetail .nhead img').attr('src', uImg);
@@ -108,6 +110,10 @@ function uiHand(){
             var $text = "<div class='spco'><p>"+data.speak[i].content+"</p></div>";
             $('.splist .text').after($text);
           }
+          $('body').append('<div class="filter"></div>');
+          $(".filter").css({
+            "height":$(document).outerHeight() + "px"
+          })
         }
       });
     })

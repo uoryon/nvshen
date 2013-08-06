@@ -38,7 +38,7 @@ http.createServer(app).listen(app.get('port'),function(){
 
 
 var job = new cronJob({
-  cronTime: '00 00 00 * 1-7',
+  cronTime: '00 00 * * 1-7',
   onTick:function(){
     console.log("tick");
     var loc = 0;

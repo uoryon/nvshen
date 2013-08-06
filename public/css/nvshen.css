@@ -1,3 +1,7 @@
+body{
+  overflow-x: hidden;
+}
+
 body, p, img, input{
   margin: 0px;
   padding: 0px;
@@ -447,6 +451,7 @@ p.name img{
 	-moz-box-shadow: 0 0 8px rgba(0,0,0,.5);
 	box-shadow: 0 0 8px rgba(0,0,0,.5);
   background-color: white;
+  margin-bottom: 20px;
 }
 
 .speak{
