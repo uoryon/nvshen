@@ -29,5 +29,7 @@ function al(message, help, po){
   //setTimeout(function(){
   //  $('al').fadeOut();
   //}, 2000);
+
+  //TODO: add the move feature to this
 }
 

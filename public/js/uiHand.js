@@ -104,22 +104,32 @@ function uiHand(){
       girl.gd(odata, function(data){
         if(data.status == 0){
           $('.moredetail').removeClass("hide");
+
           $('.moredetail .nhead p').text(odata.gname);
           $('.moredetail .nhead img').attr('src', uImg);
+
+          var $text = "";
           for(var i = 0; i < data.speak.length; i++){
-            var $text = "<div class='spco'><p>"+data.speak[i].content+"</p></div>";
-            $('.splist .text').after($text);
+            $text = "<div class='spco'><p>"+data.speak[i].content+"</p></div>" + $text;
           }
+          $('.splist .text').after($text);
+
+          $('.mpart #fir .now').text("1");
+          $('.mpart #fir .total').text(data.gal.length);
+          $('.mpart #sec .girlname').text(odata.gname);
+
           $('body').append('<div class="filter"></div>');
           $(".filter").css({
             "height":$(document).outerHeight() + "px"
-          })
+          });
         }
       });
     })
     $(".moredetail .close").click(function(e){
       $('.moredetail').addClass("hide");
+      $('.spco').remove();
       $(".filter").remove();
+      //TODO: clear the information
     })
     $(".moredetail .nhead img").click(function(e){
       $('.splist .text').slideDown();
