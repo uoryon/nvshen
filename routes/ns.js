@@ -29,7 +29,7 @@ exports.upGirl = function(req, res){
 exports.hg = function(req, res){
   User.hged(req.session.user, function(err, op){
     if(op == 1 && req.body.f != 'hat'){
-      res.send({status:3, reason:"今天操作了"});
+      return res.send({status:3, reason:"今天操作了"});
     }
     Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
       if(err){
@@ -54,6 +54,14 @@ exports.hg = function(req, res){
 }
 
 exports.up = function(req, res){
+  console.log(req.body);
+  console.log(req.files);
+  req.body.name = req.files.pic.name;
+  req.body.path = req.files.pic.path;
+  console.log(req.files.pic.type);
+  if(req.files.pic.type.split('/')[0]!='image'){
+    return res.send({status:0, reason:"麻煩上傳圖片哦。"});
+  }
   Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
     if(err){
       return res.send({status:1, reason:"網絡失敗"});

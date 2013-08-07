@@ -580,6 +580,7 @@ p.name img{
 }
 #sec{
   text-align: center;
+  z-index: 2;
 }
 #thi{
   text-align: right;

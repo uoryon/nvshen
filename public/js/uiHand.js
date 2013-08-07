@@ -44,7 +44,7 @@ function uiHand(){
         descri:$('.detai textarea').val()
       }
       if(odata.descri == "" || odata.gname == "" || odata.picurl == ""){
-        var lala = new al("把名字和描述填上嘛， 目前添加后不可修改哦。。", false, {type:'cemi'});
+        var lala = new al("把名字和描述填上嘛， 目前添加后不可修改哦。。", false);
         return false;
       }
       girl.upGirl(odata, function(data){
@@ -55,7 +55,7 @@ function uiHand(){
           $('.add .head input').val("");
           $('.gname input').val("");
           $('.detai textarea').val("");
-          var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false, {type:'cemi'});
+          var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false);
         } 
       });
     })
@@ -90,7 +90,7 @@ function uiHand(){
         }
       }
       me.update(odata, function(data){
-        var lala = new al("更新信息成功了，信息發生變化時， 請儘快告訴服務器君哦。", false, {'type':'cemi'});
+        var lala = new al("更新信息成功了，信息發生變化時， 請儘快告訴服務器君哦。", false);
       })
     })
     $(".logout").click(function(e){
@@ -152,7 +152,7 @@ function uiHand(){
             $('.splist .text').slideUp();
           }
           else{
-            var lala = new al("失敗啦~", false, 'cemi');
+            var lala = new al("失敗啦~", false);
           }
         });
       }
@@ -164,13 +164,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("操作成功啦", false, {'type':'cemi'});
+          var lala = new al("操作成功啦", false);
         }
         else if(data.status == 3){
-          var lala = new al("一天只能對一個進行操作喲~", false, {'type':'cemi'});
+          var lala = new al("一天只能對一個進行操作喲~", false);
         }
         else{
-          var lala = new al("出錯啦", false, {'type':'cemi'});
+          var lala = new al("出錯啦", false);
         }
       })
     })
@@ -181,13 +181,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("操作成功啦", false, {'type':'cemi'});
+          var lala = new al("操作成功啦", false);
         }
         else if(data.status == 3){
-          var lala = new al("一天只能對一個進行操作喲~", false, {'type':'cemi'});
+          var lala = new al("一天只能對一個進行操作喲~", false);
         }
         else{
-          var lala = new al("出錯啦", false, {'type':'cemi'});
+          var lala = new al("出錯啦", false);
         }
       })
     })
@@ -198,11 +198,23 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false, {'type':'cemi'});
+          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false);
         }
         else{
-          var lala = new al("出錯啦", false, {'type':'cemi'});
+          var lala = new al("出錯啦", false);
         }
+      })
+    })
+    $("#sec .girlname").mouseover(function(e){
+      var ofSet = $(this).offset();
+      var lala = new uppic(true, {
+        y:ofSet.top - $(this).outerHeight()/2 - 9,
+        x:ofSet.left+$(this).outerWidth() + 12
+      });
+    })
+    $("#sec .girlname").mouseout(function(e){
+      $(".uppic").fadeOut(500, function(){
+        $(this).remove();
       })
     })
   })();

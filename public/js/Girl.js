@@ -8,9 +8,9 @@ Girl.prototype = {
   hg:function(odata, callback){
     $.post('./hg', odata, callback);
   },
-  up:function(odata, callback){
-    $.post('./up', odata, callback);
-  },
+  //up:function(odata, callback){
+  //  $.post('./up', odata, callback);
+  //},
   sp:function(odata, callback){
     $.post('./sp', odata, callback);
   },

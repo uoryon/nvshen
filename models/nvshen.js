@@ -1,6 +1,7 @@
 var mongodb = require('./db');
 var pic = require('./pic');
 var crypto = require('crypto');
+var fs = require('fs');
 
 function nvshen(girl){
   this.uname = girl.uname;
@@ -107,16 +108,24 @@ nvshen.prototype = {
   },
   up:function(odata, callback){
     var self = this;
-    var oPic = new pic(odata.picurl);
     var tt = odata.date;
     var md5 = crypto.createHash('md5');
-    var ddir = __dirname+'/../public/pic/'+self.uname+'/'+self.gname+'/'+md5.update(self.uname).digest('base64')+md5.update(tt).digest('base64')+'.png';
+    var tn = odata.name;
 
-    oPic.save(ddir, function(err){
-      if(err.status){
+    tn = tname.split('.');
+    tn = tname[tname.length-1];
+
+    var ddir = __dirname+'/../public/pic/'+self.uname+'/'+self.gname+'/'+md5.update(self.uname).digest('base64')+md5.update(tt).digest('base64')+'.'+tn;
+    var tmppath = odata.path;
+    
+    fs.rename(tmppath, ddir, function(err){
+      if(err){
         return callback(err);
       }
       else{
+        fs.unlink(tmppath, function(){
+        
+        });
         mongodb.open(function(err, db){
           if(err){
             return callback(err);
@@ -126,7 +135,7 @@ nvshen.prototype = {
               mongodb.close();
               return callback(err);
             }
-            collection.insert(odata, {safe:true}, function(err, doc){
+            collection.insert({uname:self.uname, gname:self.gname, descri:odata.descri, date:odata.date, picurl:ddir}, {safe:true}, function(err, doc){
               mongodb.close();
               callback(err, doc);
             })
