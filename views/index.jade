@@ -16,7 +16,7 @@ html
     div.wraper
       div.header
         div.head
-          img(title='你的頭像，設置中更新', alt="點擊更新信息", src=head)
+          img(title='你的頭像，設置中更新', alt="點擊更新信息", src='./gupic/'+uname+'/'+head)
         p.name
           img.nl(src='/nvshen/img/GR-line.png')
           span.cname(title='你得暱稱喲')= nick
@@ -73,7 +73,7 @@ html
           div.ardown
       div.show
         div.spart
-          canvas
+          canvas(width='745', height='360')
         div.mpart
           p#fir
             span.now
@@ -87,5 +87,4 @@ html
           div.moveleft
           p.pic
             span.mid
-              img#id
           div.moveright

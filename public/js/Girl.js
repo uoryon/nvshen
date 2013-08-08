@@ -28,7 +28,7 @@ Girl.prototype = {
   },
   appTo:function(doc, i, girl){
     $that = "<div class='girlone'>\
-              <img id='"+girl.gname+"' src='"+girl.head+"'>";
+              <img id='"+girl.gname+"' src='./getpic/"+girl.uname+'/'+girl.gname+"/"+girl.head+"'>";
     if(i <= 3) $that += "<div class='ranked'>"+i+"</div>";
     $that += "<div class='des'>\
                 <p>"+girl.gname+", "+girl.descri+"</p>\

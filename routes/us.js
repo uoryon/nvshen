@@ -18,11 +18,24 @@ exports.index = function(req, res){
   res.render('index', {
     title:'我的女神--'+tmpUser.ch.nick,
     nick:tmpUser.ch.nick,
+    uname:tmpUser.uname,
     regtime:regtt,
     birthday:tmpUser.ch.birthday,
     email:tmpUser.ch.email,
     head:tmpUser.head
   });
+}
+
+exports.gupic = function(req, res){
+  console.log(req.params);
+  if(req.params.user != req.session.user.uname) return res.send({status:1, reason:"你試圖訪問別人的女孩"});
+  var ladir = __dirname+'/../private/'+req.params.user+'/'+req.params.target;
+  console.log(ladir);
+  var lala = fs.readFile(ladir, function(err, img){
+    res.attachment(ladir);
+    res.end(img, 'binary');
+  });
+
 }
 
 exports.login = function(req, res){
@@ -118,7 +131,7 @@ exports.signup = function(req, res){
       if(err){
         return res.send({status:1, reason:"存儲失敗"});
       }
-      fs.mkdirSync(__dirname+'/../public/pic/'+newUser.uname);
+      fs.mkdirSync(__dirname+'/../private/'+newUser.uname);
       res.send({status:0, reason:"註冊成功"});
     });
   });

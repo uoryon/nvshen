@@ -24,6 +24,7 @@
 - 類方法:
   - exist: function(callback) 依據提供的username, 返回文檔對象(err[, user|null])
   - login: function(user, callback) 核對數據庫中的用戶名和密碼, 確認身份.
+  - hged: function(user, callback) 判斷是否操作過好感通過op來判斷
 
 
 

@@ -16,9 +16,9 @@ exports.upGirl = function(req, res){
         if(err){
           return res.send({status:1, reason:'網絡失敗'});
         }
-        fs.mkdirSync(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname);
+        fs.mkdirSync(__dirname+'/../private/'+req.session.user.uname+'/'+girl.gname);
         var oP = new pic(req.body.picurl);
-        oP.save(__dirname+'/../public/pic/'+req.session.user.uname+'/'+girl.gname+'/head.png', function(data){
+        oP.save(__dirname+'/../private/'+req.session.user.uname+'/'+girl.gname+'/head.png', function(data){
           return res.send({status:0, reason:'成功', 'girl':girl});
         })
       })
@@ -68,7 +68,10 @@ exports.up = function(req, res){
     }
     if(girl){
       var eGirl = new Nvshen(girl);
+      req.body.date = new Date().getTime();
       eGirl.up(req.body, function(err, girl){
+        console.log('up err');
+        console.log(err);
         if(err){
           if(err.status == 2)res.send(err);
           else res.send({status:1, reason:'網絡失敗'});
@@ -141,6 +144,17 @@ exports.ga = function(req, res){
     else{
       res.send({status:2, reason:"沒有女孩"})
     }
+  });
+}
+
+exports.getpic = function(req, res){
+  console.log(req.params);
+  if(req.params.user != req.session.user.uname) return res.send({status:1, reason:"你試圖訪問別人的女孩"});
+  var ladir = __dirname+'/../private/'+req.params.user+'/'+req.params.girl+'/'+req.params.target;
+  console.log(ladir);
+  var lala = fs.readFile(ladir, function(err, img){
+    res.attachment(ladir);
+    res.end(img, 'binary');
   });
 }
 

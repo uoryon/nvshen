@@ -4,7 +4,7 @@ var pic = require('./pic');
 function User(user){
   this.uname = user.uname;
   this.password = user.password;
-  this.head = user.head || "/nvshen/pic/"+user.uname+"/head.png";
+  this.head = user.head || "head.png";
   this.ch = user.ch && {
     nick: user.ch.nick || user.uname,
     birthday:user.ch.birthday || 0,
@@ -64,7 +64,7 @@ User.prototype = {
   uphead:function(picurl, callback){
     var self = this;
     var oPic = new pic(picurl);
-    oPic.save(__dirname+'/../public/pic/'+self.uname+'/head.png', function(err){
+    oPic.save(__dirname+'/../private/'+self.uname+'/head.png', function(err){
       callback(err);  
     })
   },

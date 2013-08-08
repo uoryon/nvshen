@@ -2,3 +2,4 @@
 node_*
 *.swp
 public/pic/*
+private/*/*

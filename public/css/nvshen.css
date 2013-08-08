@@ -322,12 +322,16 @@ p.name img{
   display: none;
 }
 
-.headiconup{
+.headiconup, .girlpicup{
   height: 30px;
   width: 100px;
 }
 
-.headiconup a{
+.girlpicup{
+  width: 90px;
+}
+
+.headiconup a, .girlpicup a{
   position: absolute;
 	left: 17px;
 	top: 7px;
@@ -343,15 +347,20 @@ p.name img{
 	border-radius: 4px;
 	text-decoration: none;
 }
-.headiconup a:hover
-{
+
+.girlpicup a{
+  top:12px;
+  width: 50px;
+}
+
+.headiconup a:hover, .girlpicup a:hover{
 	background: #eee;
 	color:#000;
 	border-color: #444;
 	text-decoration: none;
 }
-.headiconup input
-{
+
+.headiconup input, .girlpicup input{
 	filter:alpha(opacity=0);
 	opacity: 0;
 	position: absolute;
@@ -570,7 +579,7 @@ p.name img{
   vertical-align: middle;
 }
 
-.mpart p{
+.mpart > p{
   position: absolute;
   width: 100%;
 }
@@ -611,6 +620,7 @@ p.name img{
   background:url('../img/GR-ml.png') no-repeat 4px 10px;
   background-color: #474747;
   position: relative;
+  z-index:3;
 }
 
 .bpart .pic{
@@ -645,6 +655,7 @@ p.name img{
   background:url('../img/GR-mr.png') no-repeat 4px 10px;
   background-color: #474747;
   position: relative;
+  z-index:3;
 }
 
 

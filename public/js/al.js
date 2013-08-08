@@ -6,7 +6,7 @@ function bc(message, arr, po){
                     </div>\
                     <p>'+message+'</p>\
                   </div>');
-  $('body').append($text);
+  $(po.target || 'body').append($text);
   if(arr){
     $text.children('.close').after("<div class='arrow'></div>");
   }
@@ -26,9 +26,11 @@ function al(message, arr, po){
 }
 
 function uppic(arr, po){
-  var $text = '<a href="javascript:void(0);"><input type="file" name="pic" id="fileupload"></a>';
+  var $text = '<div class="girlpicup"><a href="javascript:void(0);"><input type="file" name="pic" id="fileupload"></a></div>';
+  this.gname = $(po.target).text();
   this.content = bc($text, arr, po)
   this.content.addClass('uppic');
+  var self = this;
   $('#fileupload').fileupload({
 		dataType: 'json',
 		url: './up',
@@ -45,29 +47,16 @@ function uppic(arr, po){
 			console.log(data);
             data.submit();
         },
-		//formData: function(form){
-    //  var args = generatePostArgs({
-		//		catId: $('.aDiff>.cat.seled').attr('catId')
-		//		});
-		//	formData = [];
-		//	$.each(args, function (name, value) {
-		//		formData.push({name: name, value: value});
-		//	});
-		//	return formData;
-		//},
-		done: function (e, data) {
-			var $fileToken = $('#content .fileInfo[tId="'+data.tId+'"]');
-			if (data.result.status == 1){
-				$fileToken.attr('fileId', data.result.fileId);
-				var size = LOS.web.util.sizeI2S(data.total);
-				$fileToken.find('.tip>span').text(size).parent().attr('title', size);
-				if (data.result.catId != $('.aDiff>.cat.seled').attr('catId'))// not upload in this catalog
-					$fileToken.remove();
-			}else{
-				alert('文件：'+ $fileToken.find('.name>span').text() + ' 上传失败，' + data.result.msg);
-				$fileToken.remove();
-			}
+		formData: function(form){
+    	formData = [];
+			formData.push({name: 'gname', value: self.gname});
+			return formData;
 		},
+    done: function (data) {
+      if(data.status == 0){
+        var lala = new al('成功了', flase);
+      }
+    }
 	});
 }
 

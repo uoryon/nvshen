@@ -52,16 +52,28 @@
             email:
            }
       }
-  - '/uphead' 更新用戶頭像, 調用user.uphead `POST`
+  - '/uphead' /*目前和update一塊做*/更新用戶頭像, 調用user.uphead `POST`
     - 返回值:
       - 0 成功
       - 1 網絡失敗
       - 2 圖片存儲失敗
+    - 接受數據:
+      {
+        
+      }
   - '/chpass' 修改密碼, 調用user.chpass `POST`
     - 返回值:
       - 0 成功
       - 1 網絡失敗
       - 2 密碼錯誤
+  - '/gupic/:user/:target' 獲取用戶頭像， 并驗證 `GET`
+    - 返回值:
+      ﹣圖片:成功
+      - 1: 網絡失敗
+    - 接受數據
+    {
+      user, target  
+    }
 
 - ns.js 用於有關女孩的行爲
   - 引用的模塊
@@ -94,11 +106,21 @@
       - 1 網絡失敗
       - 2 沒有女孩
       - 3 圖片存儲失敗
+    - 接受數據:
+      {
+        gname:,
+        pic[file]
+      }
   - '/sp' 對女生添加說的話, 先Nvshen.get後, 使用nvshen.sp `POST`
     - 返回值:
       - 0 成功
       - 1 網絡失敗
       - 2 沒有女孩
+    - 接受數據:
+      {
+        gname:
+        content:
+      }
   - '/gd' 獲取女生的全部, 先Nvshen.get後, 調用各種 `POST`
     - 返回值:
       - 0 成功
@@ -108,17 +130,40 @@
       {
         gname:
       }
-  - '/gg' 獲得女生的圖片, 先Nvshen.get後, 使用nvshen.gg `GET`
+  - '/gg' /*現在統一在gd裡*/獲得女生的圖片, 先Nvshen.get後, 使用nvshen.gg `GET`
     - 返回值:
       - 0 成功
       - 1 網絡失敗
       - 2 沒有女孩
+    - 接受數據:
+      {
+        gname:,
+      }
   - '/gp' 獲得對女生的說話, Nvshen.gp `GET`
     - 返回值:
       - 0 成功
       - 1 網絡失敗
+    - 接受數據:
+      {
+        gname:,
+        uname:
+      }
   - '/ga' 獲得當前用戶添加過的所有女生, Nvshen.ga `GET`
     - 返回值:
       - 0 成功
       - 1 網絡錯誤
       - 2 沒有女孩
+    - 接受數據:
+      {
+        暫無
+      }
+  - '/getpic/:user/:girl/:target' 通過這些來取得女孩的圖片`GET`
+    - 返回值:
+      - 圖片
+      - 1 網絡錯誤
+    - 接受數據
+      {
+        user:uname,
+        girl:gname,
+        target: xxxxx.jpt||png
+      }

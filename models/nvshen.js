@@ -5,7 +5,7 @@ var fs = require('fs');
 
 function nvshen(girl){
   this.uname = girl.uname;
-  this.head = girl.head || "/nvshen/pic/"+girl.uname+"/"+girl.gname+"/head.png";
+  this.head = girl.head || "head.png";
   this.gname = girl.gname;
   this.descri = girl.descri || "";
   this.like = girl.like || 0;
@@ -44,13 +44,12 @@ nvshen.prototype = {
     var loc = 0;
     if(tf == 'inc' || tf == 'dec'){
       if(tf == 'inc'){
-        this.plike*=1.2;
-        this.like += this.plike;
+        this.plike  *= 1.2;
+        this.like = 1 + Math.sqrt(4 - 2 * (this.plike - 2));
       }
       else {
-        this.plike*=1.2;
-        this.like -= this.plike;
-        if(this.like<0) this.like = 0;
+        this.plike  *=0.8;
+        this.like = 1 + Math.sqrt(4 - 2 * (this.plike - 2));
       }
       mongodb.open(function(err, db){
         if(err){
@@ -108,35 +107,40 @@ nvshen.prototype = {
   },
   up:function(odata, callback){
     var self = this;
-    var tt = odata.date;
+    var tt = odata.date.toString();
     var md5 = crypto.createHash('md5');
-    var tn = odata.name;
-
-    tn = tname.split('.');
-    tn = tname[tname.length-1];
-
-    var ddir = __dirname+'/../public/pic/'+self.uname+'/'+self.gname+'/'+md5.update(self.uname).digest('base64')+md5.update(tt).digest('base64')+'.'+tn;
+    console.log(odata.name);
+    var tname = odata.name.split('.');
+    var tn = tname[tname.length-1];
+    var stin = self.uname + tt;
+    var rdir = md5.update(stin).digest('base64')+'.'+tn;
+    var ddir = __dirname+'/../private/'+self.uname+'/'+self.gname+'/'+rdir;
     var tmppath = odata.path;
     
     fs.rename(tmppath, ddir, function(err){
       if(err){
+        console.log("rename err");
         return callback(err);
       }
       else{
-        fs.unlink(tmppath, function(){
-        
+        fs.unlink(tmppath, function(err){ 
+          console.log(err);
         });
         mongodb.open(function(err, db){
           if(err){
+          console.log("db open err");
             return callback(err);
           }
           db.collection('gallery', function(err, collection){
             if(err){
               mongodb.close();
+              console.log("dbs err");
               return callback(err);
             }
-            collection.insert({uname:self.uname, gname:self.gname, descri:odata.descri, date:odata.date, picurl:ddir}, {safe:true}, function(err, doc){
+            collection.insert({uname:self.uname, gname:self.gname, descri:odata.descri, date:odata.date, picurl:rdir}, {safe:true}, function(err, doc){
               mongodb.close();
+              console.log("ins err");
+              console.log(err);
               callback(err, doc);
             })
           })
