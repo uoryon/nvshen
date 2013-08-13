@@ -207,6 +207,7 @@ p.name img{
   position: relative;
   top: -12.5px;
   left: 12.5px;
+  z-index: 12;
 }
 
 .main .close .cross{
@@ -658,11 +659,42 @@ p.name img{
   z-index:3;
 }
 
+.fixcan{
+  width: 100%;
+  height: 190px;
+  display: none;
+}
 
+.fixcan #container{
+  background:no-repeat;
+  background-size: contain;
+  height: 100px;
+  width: 100%;
+  margin-top: 25px;
+}
 
+.fixcan #forCrop{
+  display: block;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
 
+.jcrop-holder{
+  margin: 0 auto;
+  background-color: transparent !important;
+}
 
-
-
+.fixcan .play{
+  padding: 0;
+  margin: 0 auto;
+  border:0;
+  background: url('../img/GR-play.png') no-repeat;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  display: block;
+  margin-top: 25px;
+}
 
 

@@ -11,8 +11,8 @@ function bc(message, arr, po){
     $text.children('.close').after("<div class='arrow'></div>");
   }
   $text.css({
-    left:(po.x||$(window).outerWidth()- $('.alert').outerWidth()/2) + 'px',
-    top:(po.y||$(window).outerHeight()- $('.alert').outerHeight()/2) + 'px',
+    left:(po.x||$(window).outerWidth()/2- $('.alert').outerWidth()/2) + 'px',
+    top:(po.y||$(window).outerHeight()/2- $('.alert').outerHeight()/2) + 'px',
   });
   $text.children('.close').click(function(e){
     $text.remove();
@@ -60,3 +60,16 @@ function uppic(arr, po){
 	});
 }
 
+function fixcan(img, arr, po){
+//  var $text = '<div id="container" style="background-image:url('+img.src+');"><div><div id="cliper"></div><div id="fixer"><img></div>'
+  var $text = '<div id="container"><img id="forCrop" src="'+img.src+'"></div><div class="play"></div>'
+  var rate = 100/img.height;
+  this.content = bc($text, arr, po);
+  this.content.addClass('fixcan');
+  this.content.children('p').remove();
+  this.content.children('.close').remove();
+  this.content.children().children('#forCrop').css({'width':img.width * rate + "px", 'left':210/2 - img.width * rate/2 + "px"});
+  //this.content.children().children('#forCrop').Jcrop();
+  var self = this;
+  return rate;
+}

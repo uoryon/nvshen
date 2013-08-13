@@ -33,7 +33,25 @@ function uiHand(){
         ct = canvas.getContext('2d');
 
         $img.load(function(){
-          ct.drawImage(this, 0, 0, 80, 80);
+          var self = this;
+          var rate = fixcan(this, false, {target:'.main',x:'0', y:'0'});
+          $(".fixcan").slideDown();
+          //ct.drawImage(this, 0, 0, 80, 80);
+          $('#forCrop').click(function(e){
+            function kana(c){
+              if(c.w == 0 && c.h == 0) return false;
+              ct.drawImage(self, c.x/rate, c.y/rate, c.w / rate, c.h / rate, 0, 0, 80, 80);
+              console.log(c.x+","+ c.y+","+ c.x2+","+ c.y2+","+ c.w+","+ c.h);
+            }
+            $(this).Jcrop({
+              'aspectRatio':1,
+              'onChange':kana,
+              'onSelect':kana
+            });
+          });
+          $(".fixcan .play").click(function(e){
+            $(".fixcan").slideUp();
+          })
         });
       }
       reader.readAsDataURL(file);
@@ -45,7 +63,7 @@ function uiHand(){
         descri:$('.detai textarea').val()
       }
       if(odata.descri == "" || odata.gname == "" || odata.picurl == ""){
-        var lala = new al("把名字和描述填上嘛， 目前添加后不可修改哦。。", false);
+        var lala = new al("把名字和描述填上嘛， 目前添加后不可修改哦。。", false, {});
         return false;
       }
       girl.upGirl(odata, function(data){
@@ -56,7 +74,7 @@ function uiHand(){
           $('.add .head input').val("");
           $('.gname input').val("");
           $('.detai textarea').val("");
-          var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false);
+          var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false, {});
         } 
       });
     })
@@ -91,7 +109,7 @@ function uiHand(){
         }
       }
       me.update(odata, function(data){
-        var lala = new al("更新信息成功了，信息發生變化時， 請儘快告訴服務器君哦。", false);
+        var lala = new al("更新信息成功了，信息發生變化時， 請儘快告訴服務器君哦。", false, {});
       })
     })
     $(".logout").click(function(e){
@@ -162,7 +180,7 @@ function uiHand(){
             $('.splist .text').slideUp();
           }
           else{
-            var lala = new al("失敗啦~", false);
+            var lala = new al("失敗啦~", false, {});
           }
         });
       }
@@ -196,13 +214,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("操作成功啦", false);
+          var lala = new al("操作成功啦", false, {});
         }
         else if(data.status == 3){
-          var lala = new al("一天只能對一個進行操作喲~", false);
+          var lala = new al("一天只能對一個進行操作喲~", false, {});
         }
         else{
-          var lala = new al("出錯啦", false);
+          var lala = new al("出錯啦", false, {});
         }
       })
     })
@@ -213,13 +231,13 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("操作成功啦", false);
+          var lala = new al("操作成功啦", false, {});
         }
         else if(data.status == 3){
-          var lala = new al("一天只能對一個進行操作喲~", false);
+          var lala = new al("一天只能對一個進行操作喲~", false, {});
         }
         else{
-          var lala = new al("出錯啦", false);
+          var lala = new al("出錯啦", false, {});
         }
       })
     })
@@ -230,10 +248,10 @@ function uiHand(){
       }
       girl.hg(odata, function(data){
         if(data.status == 0){
-          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false);
+          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false, {});
         }
         else{
-          var lala = new al("出錯啦", false);
+          var lala = new al("出錯啦", false, {});
         }
       })
     })

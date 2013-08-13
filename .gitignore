@@ -1,5 +1,4 @@
-.DS*
+*.DS*
 node_*
 *.swp
-public/pic/*
 private/*/*
