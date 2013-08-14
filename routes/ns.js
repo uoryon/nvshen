@@ -70,7 +70,6 @@ exports.up = function(req, res){
       var eGirl = new Nvshen(girl);
       req.body.date = new Date().getTime();
       eGirl.up(req.body, function(err, girl){
-        console.log('up err');
         console.log(err);
         if(err){
           if(err.status == 2)res.send(err);
@@ -178,7 +177,27 @@ exports.gd = function(req, res){
       })
     }
     else{
-      res.send({status:2, reason:"已經存在女孩"})
+      res.send({status:2, reason:"不存在女孩"})
+    }
+  })
+}
+
+exports.share = function(req, res){
+  Nvshen.get(req.session.user.uname, req.body.gname, function(err, girl){
+    if(err){
+      return res.send({status:1, reason:"網絡錯誤"});
+    }
+    if(girl){
+      var eGirl = new Nvshen(girl);
+      eGirl.share(function(err){
+        if(err){
+          return res.send({status:1, reason:"網絡錯誤"});
+        }
+        res.send({status:0, reason:"分享成功"})
+      })
+    }
+    else{
+      res.send({status:2, reason:"不存在女孩"})
     }
   })
 }

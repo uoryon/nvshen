@@ -2,8 +2,11 @@ var crypto = require('crypto');
 var User = require('../models/user');
 var us = require('./us');
 var ns = require('./ns');
+var sq = require('./sq')
 
 module.exports = function(app){
+
+  app.get('/sq', sq.imo);
 
   app.get('/', us.wc);
   app.get('/', us.index);
@@ -20,6 +23,7 @@ module.exports = function(app){
   app.post('/up', ns.up);
   app.post('/sp', ns.sp);
   app.post('/gd', ns.gd);
+  app.post('/share', ns.share);
   app.get('/gg', ns.gg);
   app.get('/gp', ns.gp);
   app.get('/getpic/:user/:girl/:target', ns.getpic);

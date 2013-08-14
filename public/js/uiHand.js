@@ -260,6 +260,19 @@ function uiHand(){
         }
       })
     })
+    $(".share").click(function(e){
+      var odata = {
+        gname:$(this).parent().parent().children('img').attr('id')
+      }
+      girl.share(odata, function(e){
+        if(data.status == 0){
+          var lala = new al("這樣很辛苦吧，但是請加油，以後一定會更好的", false, {});
+        }
+        else{
+          var lala = new al("出錯啦", false, {});
+        }
+      })
+    })
     $("#sec .girlname").mouseenter(function(e){
       console.log("1");
       if($(".uppic").length >0) return false;

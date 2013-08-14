@@ -2,6 +2,7 @@ var mongodb = require('./db');
 var pic = require('./pic');
 var crypto = require('crypto');
 var fs = require('fs');
+var util = require('util');
 
 function nvshen(girl){
   this.uname = girl.uname;
@@ -123,9 +124,9 @@ nvshen.prototype = {
         return callback(err);
       }
       else{
-        fs.unlink(tmppath, function(err){ 
-          console.log(err);
-        });
+        //fs.unlink(tmppath, function(err){ 
+        //  console.log(err);
+        //});
         mongodb.open(function(err, db){
           if(err){
           console.log("db open err");
@@ -196,6 +197,47 @@ nvshen.prototype = {
           return callback(err);
         }
         collection.insert(odata, {safe:true}, function(err){
+          mongodb.close();
+          callback(err);
+        })
+      })
+    })
+  },
+  share:function(callback){
+    var self = this;
+    mongodb.open(function(err, db){
+      if(err){
+        return callback(err);
+      }
+      db.collection('gallery', function(err, collection){
+        if(err){
+          mongodb.close();
+          return callback(err);
+        }
+        collection.find({"gname":self.gname, "uname":self.uname}).toArray(function(err, doc){
+          var BUF_LENGTH = 64 * 1024;
+          var _buff = new Buffer(BUF_LENGTH);
+          doc.forEach(function(e){
+            e["share"]=1;
+            console.log(e.picurl);
+            var srcFile = __dirname+"/../private/"+self.uname+"/"+self.gname+"/"+e.picurl;
+            var destFile = __dirname+"/../public/pubpic/"+e.picurl;
+            console.log(srcFile);
+            console.log(destFile);
+            var fdr = fs.openSync(srcFile, 'r');
+            var fdw = fs.openSync(destFile, 'w');
+            var bytesRead = 1;
+            var pos = 0;
+            while (bytesRead > 0) {
+              bytesRead = fs.readSync(fdr, _buff, 0, BUF_LENGTH, pos);
+              fs.writeSync(fdw, _buff, 0, bytesRead);
+              pos += bytesRead;
+            }
+            fs.closeSync(fdr);
+            fs.closeSync(fdw);
+            console.log("try to write");
+            collection.save(e);
+          })
           mongodb.close();
           callback(err);
         })

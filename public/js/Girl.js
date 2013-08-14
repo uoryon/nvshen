@@ -26,6 +26,9 @@ Girl.prototype = {
   gd:function(odata, callback){
     $.post('./gd', odata, callback);
   },
+  share:function(odata, callback){
+    $.post('./share', odata, callback);
+  },
   appTo:function(doc, i, girl){
     $that = "<div class='girlone'>\
               <img id='"+girl.gname+"' src='./getpic/"+girl.uname+'/'+girl.gname+"/"+girl.head+"'>";
@@ -37,6 +40,7 @@ Girl.prototype = {
                 <input class='like' type='button' >\
                 <input class='dislike' type='button' >\
                 <input class='hate' type='button' >\
+                <input class='share' type='button' >\
               </div>\
             </div>";
     doc.append($that);

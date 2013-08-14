@@ -54,7 +54,7 @@ function uppic(arr, po){
 		},
     done: function (data) {
       if(data.status == 0){
-        var lala = new al('成功了', flase);
+        var lala = new al('成功了', flase, {});
       }
     }
 	});
