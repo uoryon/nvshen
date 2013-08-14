@@ -36,12 +36,17 @@ function uiHand(){
           var self = this;
           var rate = fixcan(this, false, {target:'.main',x:'0', y:'0'});
           $(".fixcan").slideDown();
+          $(".fixcan .play").fadeOut();
           //ct.drawImage(this, 0, 0, 80, 80);
           $('#forCrop').click(function(e){
             function kana(c){
-              if(c.w == 0 && c.h == 0) return false;
+              if(c.w == 0 && c.h == 0){
+                $(".fixcan .play").fadeOut();
+                return false;
+              }
               ct.drawImage(self, c.x/rate, c.y/rate, c.w / rate, c.h / rate, 0, 0, 80, 80);
               console.log(c.x+","+ c.y+","+ c.x2+","+ c.y2+","+ c.w+","+ c.h);
+              $(".fixcan .play").fadeIn();
             }
             $(this).Jcrop({
               'aspectRatio':1,
