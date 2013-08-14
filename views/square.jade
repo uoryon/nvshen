@@ -1,0 +1,20 @@
+doctype 5
+html
+  head
+    title 這裡是廣場
+    script(src='/nvshen/js/jquery-portfolio.js')
+    script(src='/nvshen/js/portfolio.js')
+    script(src='/nvshen/js/sq-init.js')
+    link(href='/nvshen/css/sq-reset.css', rel='stylesheet')
+    link(href='/nvshen/css/sq-style.css', rel='stylesheet')
+  body
+    div.content(data-img= girlsrc, style="display:none;")
+    div#portfolio
+      div#background
+      div.arrows
+        a.up(href="#") Up
+        a.down(href="#") Down
+        a.prev(href="#") Prev
+        a.next(href="#") Next
+      div.gallery
+        div.inside
