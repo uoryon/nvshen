@@ -1,4 +1,4 @@
-*.DS*
+.DS*
 node_*
 *.swp
 private/*/*
