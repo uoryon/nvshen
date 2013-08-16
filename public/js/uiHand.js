@@ -162,29 +162,31 @@ function uiHand(){
     $(".moredetail .nhead img").click(function(e){
       $('.splist .text').slideDown();
     })
-    $(".splist .endtext").click(function(e){
-      var odata = {
-        content:$('.splist .text textarea').val(),
-        gname: $(this).parents().siblings(".nhead").children('p').text()
+    $(".splist textarea").keyup(function(e){
+      if(e.which == 13){
+        var odata = {
+          content:$('.splist .text textarea').val(),
+          gname: $(this).parents().siblings(".nhead").children('p').text()
+        }
+        $('.splist .text textarea').val("");
+        if(odata.content == ""){
+          return false;
+        }
+        else{
+          girl.sp(odata, function(data){
+            if(data.status == 0){
+              var $text = "<div class='spco' style='display:none'><p>"+odata.content+"</p></div>";
+              $(".splist .text").after($text);
+              $(".splist .spco").fadeIn(500);
+              $('.splist .text').slideUp();
+            }
+            else{
+              var lala = new al("失敗啦~", false, {});
+            }
+          });
+        }
       }
-      $('.splist .text textarea').val("");
-      if(odata.content == ""){
-        return false;
-      }
-      else{
-        girl.sp(odata, function(data){
-          if(data.status == 0){
-            var $text = "<div class='spco' style='display:none'><p>"+odata.content+"</p></div>";
-            $(".splist .text").after($text);
-            $(".splist .spco").fadeIn(500);
-            $('.splist .text').slideUp();
-          }
-          else{
-            var lala = new al("失敗啦~", false, {});
-          }
-        });
-      }
-    })
+    });
     $(".bpart .moveleft").click(function(e){
       if($('.cho').index() > 0){
         var mark = $('.cho').index();
