@@ -26,6 +26,7 @@ function uiHand(){
     })
     $(".add .head input").change(function(e){
       file = e.target.files[0];
+      $(".fixcan").remove();
       reader = new FileReader();
       reader.onload = function(e){
         $img = $('<img>', {src:e.target.result});
@@ -35,18 +36,15 @@ function uiHand(){
         $img.load(function(){
           var self = this;
           var rate = fixcan(this, false, {target:'.main',x:'0', y:'0'});
+          $(".main .close").after($(".fixcan"));
           $(".fixcan").slideDown();
-          $(".fixcan .play").fadeOut();
           //ct.drawImage(this, 0, 0, 80, 80);
-          $('#forCrop').click(function(e){
+          $('#forCrop').mouseenter(function(e){
             function kana(c){
               if(c.w == 0 && c.h == 0){
-                $(".fixcan .play").fadeOut();
                 return false;
               }
               ct.drawImage(self, c.x/rate, c.y/rate, c.w / rate, c.h / rate, 0, 0, 80, 80);
-              console.log(c.x+","+ c.y+","+ c.x2+","+ c.y2+","+ c.w+","+ c.h);
-              $(".fixcan .play").fadeIn();
             }
             $(this).Jcrop({
               'aspectRatio':1,
@@ -54,9 +52,6 @@ function uiHand(){
               'onSelect':kana
             });
           });
-          $(".fixcan .play").click(function(e){
-            $(".fixcan").slideUp();
-          })
         });
       }
       reader.readAsDataURL(file);
