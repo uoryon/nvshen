@@ -26,38 +26,11 @@ function al(message, arr, po){
 }
 
 function uppic(arr, po){
-  var $text = '<div class="girlpicup"><a href="javascript:void(0);"><input type="file" name="pic" id="fileupload"></a></div>';
+  var $text = '<div class="girlpicup"><input type="file" name="pic" id="fileupload"></div>';
   this.gname = $(po.target).text();
   this.content = bc($text, arr, po)
   this.content.addClass('uppic');
   var self = this;
-  $('#fileupload').fileupload({
-		dataType: 'json',
-		url: './up',
-    add: function (e, data) {
-			//var file = data.files[0];
-			//var subInd = file.name.lastIndexOf('.');
-			//var $fileToken = makeFile({
-			//	id: -1,
-			//	name: file.name.substr(0, subInd),
-			//	type: file.name.substr(subInd+1),
-			//	tip: '正在上传'
-			//});
-			//data.tId = $fileToken.attr('tId');
-			console.log(data);
-            data.submit();
-        },
-		formData: function(form){
-    	formData = [];
-			formData.push({name: 'gname', value: self.gname});
-			return formData;
-		},
-    done: function (data) {
-      if(data.status == 0){
-        var lala = new al('成功了', flase, {});
-      }
-    }
-	});
 }
 
 function fixcan(img, arr, po){

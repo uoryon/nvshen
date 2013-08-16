@@ -40,7 +40,6 @@ Girl.prototype = {
                 <input class='like' type='button' >\
                 <input class='dislike' type='button' >\
                 <input class='hate' type='button' >\
-                <input class='share' type='button' >\
               </div>\
             </div>";
     doc.append($that);

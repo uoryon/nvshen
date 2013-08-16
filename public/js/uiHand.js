@@ -24,19 +24,20 @@ function uiHand(){
         "height":$(document).outerHeight() + "px"
       })
     })
-    $(".add .head input").change(function(e){
+    $(".add .head input, .changee .headiconup input").change(function(e){
       file = e.target.files[0];
       $(".fixcan").remove();
       reader = new FileReader();
+      reader.sDom = this;
       reader.onload = function(e){
         $img = $('<img>', {src:e.target.result});
-        canvas = $('.add .head canvas')[0];
+        canvas = $(reader.sDom).siblings()[0];
         ct = canvas.getContext('2d');
 
         $img.load(function(){
           var self = this;
-          var rate = fixcan(this, false, {target:'.main',x:'0', y:'0'});
-          $(".main .close").after($(".fixcan"));
+          var rate = fixcan(this, false, {target:$(reader.sDom).parent().parent(),x:'0', y:'0'});
+          $(reader.sDom).parent().before($(".fixcan"));
           $(".fixcan").slideDown();
           //ct.drawImage(this, 0, 0, 80, 80);
           $('#forCrop').mouseenter(function(e){
@@ -86,7 +87,7 @@ function uiHand(){
         $(".changee").addClass("active");
       }
     })
-    $(".changee .headiconup input").change(function(e){
+    /*$(".changee .headiconup input").change(function(e){
       file = e.target.files[0];
       reader = new FileReader();
       reader.onload = function(e){
@@ -100,6 +101,7 @@ function uiHand(){
       }
       reader.readAsDataURL(file);
     });
+    */
     $(".changee .play").click(function(e){
       var odata = {
         picurl:$('.changee .headiconup canvas')[0].toDataURL(),
@@ -193,7 +195,7 @@ function uiHand(){
         $('.cho').prev().addClass('cho')
         $($('.cho')[1]).removeClass('cho');
         $('p.pic .mid').css({
-          left:$('p.pic .mid').position().left + 31 + "px"
+          left:$('p.pic .mid').position().left + 30 + "px"
         })
         self.paint('.spart canvas');
       }
@@ -204,7 +206,7 @@ function uiHand(){
         $('.cho').next().addClass('cho')
         $($('.cho')[0]).removeClass('cho');
         $('p.pic .mid').css({
-          left:$('p.pic .mid').position().left - 31 + "px"
+          left:$('p.pic .mid').position().left - 30 + "px"
         })
       }
       self.paint('.spart canvas');
@@ -270,7 +272,7 @@ function uiHand(){
         }
       })
     })
-    $("#sec .girlname").mouseenter(function(e){
+    /*$("#sec .girlname").mouseenter(function(e){
       console.log("1");
       if($(".uppic").length >0) return false;
       var posi = $(this).position();
@@ -279,7 +281,43 @@ function uiHand(){
         x:posi.left + $(this).outerWidth() + 12,
         target: this
       });
+    })*/
+    $(".show .spart").mouseleave(function(e){
+      console.log("out");
+      $(".girlpicup").fadeOut();
     })
+    $(".show .spart").mouseenter(function(e){
+      console.log("in");
+      $(".girlpicup").fadeIn();
+    })
+    $('#fileupload').fileupload({
+		  dataType: 'json',
+		  url: './up',
+      add: function (e, data) {
+			  //var file = data.files[0];
+			  //var subInd = file.name.lastIndexOf('.');
+			  //var $fileToken = makeFile({
+			  //	id: -1,
+			  //	name: file.name.substr(0, subInd),
+			  //	type: file.name.substr(subInd+1),
+			  //	tip: '正在上传'
+			  //});
+			  //data.tId = $fileToken.attr('tId');
+			  console.log("add");
+        data.submit();
+      },
+		  formData: function(form){
+    	  formData = [];
+        formData.push({name: 'gname', value: $('.show #sec .girlname').text()});
+			  return formData;
+		  },
+      done: function (data) {
+        console.log("back:"+data);
+        if(data.status == 0){
+          var lala = new al('成功了', flase, {});
+        }
+      }
+	  });
   })();
   this.clearpaint = function(target){
     var canvas = $(target)[0]

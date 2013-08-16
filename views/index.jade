@@ -50,11 +50,10 @@ html
       div.changee
         div.headiconup
           canvas(height=80, width=80)
-          a(href='javascript:void(0)') 點擊上傳頭像
-            input(type='file', value='點擊上傳頭像')
+          input(type='file', value='點擊上傳頭像')
         div.ch
-          input.upnick
-          input.upemail
+          input.upnick(placeholder="更新你的暱稱")
+          input.upemail(placeholder="更新你的郵箱")
         button.play
       div.setting
         p 設置
@@ -75,6 +74,8 @@ html
           div.ardown
       div.show
         div.spart
+          div.girlpicup
+            input(type="file", id="fileupload", name="pic")
           canvas(width='745', height='360')
         div.mpart
           p#fir

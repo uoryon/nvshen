@@ -219,6 +219,7 @@ p.name img{
 .main .head{
   margin-top: 30px;
   border-radius: 0;
+  border: 2px solid #ff9f00;
 }
 
 .main .head canvas{
@@ -314,57 +315,43 @@ p.name img{
   left: 290px;
 }
 
-.changee canvas{
-  display: none;
+.headiconup{
+  height: 80px;
+  width: 80px;
+  margin: 0 auto;
 }
 
-.headiconup, .girlpicup{
-  height: 30px;
-  width: 100px;
+.headiconup canvas{
+  border: 1px solid #aaa;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  z-index: 2;
+}
+
+.headiconup input{
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  z-index: 3;
+  opacity: .01;
 }
 
 .girlpicup{
-  width: 90px;
+  position:absolute;
+  right: 4px;
+  top:4px;
+  width:20px;
+  height: 20px;
+  background: url('../img/GR-add.png') no-repeat;
+  display: none;
 }
 
-.headiconup a, .girlpicup a{
+.girlpicup input{
   position: absolute;
-	left: 17px;
-	top: 7px;
-	width: 100px;
-	height: 24px;
-	border: 1px solid #aaa;
-	text-align: center;
-	background: #ddd;
-	line-height: 24px;
-	cursor: pointer;
-	overflow: hidden;
-	color: #888;
-	border-radius: 4px;
-	text-decoration: none;
-}
-
-.girlpicup a{
-  top:12px;
-  width: 50px;
-}
-
-.headiconup a:hover, .girlpicup a:hover{
-	background: #eee;
-	color:#000;
-	border-color: #444;
-	text-decoration: none;
-}
-
-.headiconup input, .girlpicup input{
-	filter:alpha(opacity=0);
-	opacity: 0;
-	position: absolute;
-	right: 0;
-	top:0;
-	width: 200px;
-	height: 20px;
-	cursor: pointer;
+  width: 20px;
+  height: 20px;
+  opacity: .01;
 }
 
 .ch{
@@ -628,6 +615,7 @@ p.name img{
   position: absolute;
   overflow: hidden;
   left: 362px;
+  transition: left 1s;
 }
 
 .bpart img{
@@ -648,6 +636,10 @@ p.name img{
   background-color: #474747;
   position: relative;
   z-index:3;
+}
+
+.main .fixcan{
+  margin-bottom: -30px;
 }
 
 .fixcan{
