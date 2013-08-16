@@ -515,11 +515,7 @@ p.name img{
 .splist .text textarea{
   width: 190px;
   resize: none;
-  background-color: #ff6900;
   margin: 0 auto;
-  outline: none;
-  border: 0;
-  color: white;
 }
 
 .splist .endtext{
