@@ -543,9 +543,16 @@ p.name img{
   padding-bottom: 0px;
 }
 
-.spart canvas{
+.spart .showcontan{
   height: 100%;
   width: 100%;
+}
+
+.spart img{
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .mpart{
@@ -602,13 +609,40 @@ p.name img{
   z-index:3;
 }
 
+.bpart .fol{
+  width:75px;
+  background:url("../img/GR-fol.png") no-repeat;
+  position: absolute;
+  left: 16px;
+  z-index: 1;
+}
+
+.bpart .for{
+  width:75px;
+  background:url("../img/GR-for.png") no-repeat;
+  position:absolute;
+  right:16px;
+  z-index:2;
+}
+
 .bpart .pic{
   position: absolute;
-  width: 100%;
+  width: 754px;
   height: 32px;
   text-align: center;
   margin: 5.5px;
   overflow: hidden;
+}
+
+.bpart .armid{
+  width: 12px;
+  height: 7px;
+  margin: 0 auto;
+  float: none;
+  position: absolute;
+  left: 377px;
+  top: -7px;
+  background:url("../img/GR-armid.png") no-repeat;
 }
 
 .bpart .pic .mid{
@@ -618,15 +652,22 @@ p.name img{
   transition: left 1s;
 }
 
-.bpart img{
-  width: 31px;
-  height: 31px;
-  float: left;
+.bpart .imgcon{
+  margin: 0;
+  width: 30px;
+  height: 30px;
   border: 1px solid transparent;
 }
 
-.bpart img.this{
+.bpart .imgcon.cho{
   border: 1px solid #7e7e7e;
+}
+
+.bpart img{
+  height: 30px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .bpart .moveright{

@@ -135,13 +135,23 @@ function uiHand(){
             $text = "<div class='spco'><p>"+data.speak[i].content+"</p></div>" + $text;
           }
           for(var i = 0; i < data.gal.length; i++){
-            $img += "<img src='./getpic/"+data.gal[i].uname+"/"+data.gal[i].gname+"/"+data.gal[i].picurl+"'>";
+            $img += "<div class='imgcon'><img src='./getpic/"+data.gal[i].uname+"/"+data.gal[i].gname+"/"+data.gal[i].picurl+"'></div>";
           }
           $('.splist .text').after($text);
           
           $('p.pic .mid').append($img);
-          $('p.pic .mid img').first().addClass('cho');
-          self.paint('.spart canvas');
+          $('p.pic .mid .imgcon').first().addClass('cho');
+          self.paint();
+
+          $("p.pic .imgcon").click(function(e){
+            var mark = $(this).index();
+            $('.cho').removeClass("cho");
+            $(this).addClass("cho");
+            $('p.pic .mid').css({
+              left:362 - 32 * mark + "px"
+            })
+            self.paint();
+          })
 
           $('.mpart #fir .now').text("1");
           $('.mpart #fir .total').text(data.gal.length);
@@ -157,7 +167,9 @@ function uiHand(){
     $(".moredetail .close").click(function(e){
       $('.moredetail').addClass("hide");
       $('.spco').remove();
-      $('p.pic .mid img').remove();
+      $('.spart img').attr("src", "");
+      $('p.pic .mid .imgcon').remove();
+      $('p.pic .mid').css({left:"362px"});
       $(".filter").remove();
       //TODO: clear the information
     })
@@ -191,25 +203,25 @@ function uiHand(){
     });
     $(".bpart .moveleft").click(function(e){
       if($('.cho').index() > 0){
-        var mark = $('.cho').index();
+        var mark = $('.cho').index() - 1;
         $('.cho').prev().addClass('cho')
         $($('.cho')[1]).removeClass('cho');
         $('p.pic .mid').css({
-          left:$('p.pic .mid').position().left + 30 + "px"
+          left:362 - 32 * mark + "px"
         })
-        self.paint('.spart canvas');
+        self.paint();
       }
     })
     $(".bpart .moveright").click(function(e){
       if($('.cho').index() < $("p.pic .mid img").length - 1){
-        var mark = $('.cho').index();
+        var mark = $('.cho').index() + 1;
         $('.cho').next().addClass('cho')
         $($('.cho')[0]).removeClass('cho');
         $('p.pic .mid').css({
-          left:$('p.pic .mid').position().left - 30 + "px"
+          left:362 - 32 * mark + "px"
         })
       }
-      self.paint('.spart canvas');
+      self.paint();
     })
     $(".like").click(function(e){
       var odata = {
@@ -319,41 +331,7 @@ function uiHand(){
       }
 	  });
   })();
-  this.clearpaint = function(target){
-    var canvas = $(target)[0]
-    var can = canvas.getContext('2d');
-    can.clearRect(0, 0, canvas.width, canvas.height);  
-  }
   this.paint = function(target){
-    var bb = new Image();
-    var canvas = $(target)[0]
-    var can = canvas.getContext('2d');
-
-    self.clearpaint(target);
-
-    bb.onload = function(){
-      var height = bb.height,
-          width = bb.width,
-          rate = height/width,
-          left = 0,
-          top = 0;
-          canrate = canvas.height/canvas.width;
-    if(height > canvas.height || width > canvas.width){
-        if(rate > canrate){
-          var pp = height/canvas.height;
-          height = canvas.height;
-          width = width / pp;
-        }
-        else{
-          var pp = width/canvas.width;
-          width = canvas.width;
-          height = height / pp;
-        }
-      }
-      left = Math.abs(width-canvas.width)/2;
-      top = Math.abs(height-canvas.height)/2;
-      can.drawImage(bb, left, top, width, height);
-    }
-    bb.src = $('.cho').attr('src');
+    $(".spart img").attr("src",$('.cho img').attr('src'));
   }
 }

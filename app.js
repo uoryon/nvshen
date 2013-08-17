@@ -62,17 +62,14 @@ var job = new cronJob({
         }
         collection.find({}).toArray(function(err, doc){
           doc.forEach(function(e){
-            if(e.plike > 0.1){
+            if(e.plike > 1){
               e.plike  -= 0.1;
             }
             e.like = 1 + Math.sqrt(4 - 2 * (e.plike - 2));
             collection.save(e);
           })
+          mongodb.close();
         })
-        //collection.update({"plike":{$gt:0.05}}, {$inc:{"plike":-0.05}}, {multi:true}, function(err, doc){
-        //  while(!loc){}
-        //  mongodb.close();
-        //})
       })
     })
   }
