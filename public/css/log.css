@@ -3,6 +3,10 @@ body, p{
   padding:0;
 }
 
+.play{
+  outline:none;
+}
+
 .al{
   position:absolute;
 }

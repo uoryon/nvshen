@@ -20,7 +20,7 @@ $(function(){
   $('.button.login .play').click(function(e){
     $('#title, #wel, .button').addClass('act');
     $('p.sign').addClass('hide');
-    setTimeout(function(){ 
+    setTimeout(function(){
       $('.button').slideUp(200);
       $('#wel').slideUp(200);
       setTimeout(function(){
@@ -31,7 +31,7 @@ $(function(){
   $('p.sign').click(function(e){
     $('#title, #wel, .button').addClass('act');
     $('p.sign').addClass('hide');
-    setTimeout(function(){ 
+    setTimeout(function(){
       $('.button').slideUp(200);
       $('#wel').slideUp(200);
       setTimeout(function(){
@@ -56,6 +56,11 @@ $(function(){
       }
     })
   });
+  $('.inp.login').keypress(function(e){
+    if(e.which === 13){
+      $('.inp.login > .play').click();
+    }
+  })
   $('.inp.sign > .play').click(function(e){
     var odata = {
       uname: $('input[name="signname"]').val(),
