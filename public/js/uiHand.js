@@ -36,8 +36,11 @@ function uiHand(){
 
         $img.load(function(){
           var self = this;
+          self.edge = self.height>self.width?self.height:self.width;
+          self.edge = self.edge*2;
           var rate = fixcan(this, false, {target:$(reader.sDom).parent().parent(),x:'0', y:'0'});
           $(reader.sDom).parent().before($(".fixcan"));
+          canvas.height = canvas.width = self.edge;
           $(".fixcan").slideDown();
           //ct.drawImage(this, 0, 0, 80, 80);
           $('#forCrop').mouseenter(function(e){
@@ -45,7 +48,8 @@ function uiHand(){
               if(c.w == 0 && c.h == 0){
                 return false;
               }
-              ct.drawImage(self, c.x/rate, c.y/rate, c.w / rate, c.h / rate, 0, 0, 80, 80);
+              ct.clearRect(0, 0, self.edge, self.edge);
+              ct.drawImage(self, c.x/rate, c.y/rate, c.w/rate, c.h/rate, 0, 0, self.edge, self.edge);
             }
             $(this).Jcrop({
               'aspectRatio':1,
