@@ -16,7 +16,7 @@ function uiHand(){
     })
     $(".cen").click(function(e){
       $('.add').css({
-        left: $(window).outerWidth()/2 - 295/2 + 'px'
+        left: $(window).outerWidth()/2 - $('.add').outerWidth()/2 + 'px'
       });
       $('.add').removeClass('hide');
       $('body').append('<div class="filter"></div>');
@@ -37,9 +37,16 @@ function uiHand(){
         $img.load(function(){
           var self = this;
           self.edge = self.height>self.width?self.height:self.width;
-          self.edge = self.edge*2;
-          var rate = fixcan(this, false, {target:$(reader.sDom).parent().parent(),x:'0', y:'0'});
-          $(reader.sDom).parent().before($(".fixcan"));
+          self.edge = self.edge*3;
+          //var oFix = new fixcan(this, false, {target:container.content,x:'0', y:'0'});
+          var oFix = new fixcan(this);
+          var rate = oFix.rate
+          var container =  new al(oFix.content.html(), false, {});
+          container.content.css({
+            top:container.content.position().top - 40 + 'px'
+          })
+          //container.append($('.fixcan'));
+          //$(reader.sDom).parent().before($(".fixcan"));
           canvas.height = canvas.width = self.edge;
           $(".fixcan").slideDown();
           //ct.drawImage(this, 0, 0, 80, 80);
@@ -80,7 +87,7 @@ function uiHand(){
           $('.gname input').val("");
           $('.detai textarea').val("");
           var lala = new al("添加成功了，每日都來看一看吧， 相信過一段時間你可以認真的發現到自己的心意的。", false, {});
-        } 
+        }
       });
     })
     $(".setting").click(function(e){
@@ -142,7 +149,7 @@ function uiHand(){
             $img += "<div class='imgcon'><img src='./getpic/"+data.gal[i].uname+"/"+data.gal[i].gname+"/"+data.gal[i].picurl+"'></div>";
           }
           $('.splist .text').after($text);
-          
+
           $('p.pic .mid').append($img);
           $('p.pic .mid .imgcon').first().addClass('cho');
           self.paint();
