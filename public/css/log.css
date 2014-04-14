@@ -14,13 +14,26 @@ body, p{
 .hide{
   display: none !important;
 }
-.bg{
+
+.bgpic{
   background: url('../img/GR-bg.jpg') no-repeat;
+  margin:auto;
+  height: 500px;
+  position:fixed;
+  left: 0;
+  right:0;
+  top:  0;
+  bottom: 0;
+}
+
+
+.bgnopic{
+  position:relative;
   margin-top: 100px;
   height: 500px;
 }
 
-.bg p{
+.bgnopic p{
   text-align: center;
 }
 
@@ -95,10 +108,11 @@ p.sign{
 }
 
 .inp{
-  height: 260px;
+  /*height: 260px;*/
   width: 380px;
   margin: 0 auto;
   margin-top: 55px;
+  margin-bottom: 20px;
   background-color: rgba(255, 105, 0, 0.5);
   display:none;
 }
@@ -129,7 +143,7 @@ p.sign{
   margin-top: 5px;
 }
 
-.inp.sign {
+/*.inp.sign {
   width: 740px;
 }
 
@@ -141,7 +155,7 @@ p.sign{
 .inp.sign .play{
   margin-top: 64px;
 }
-
+*/
 .alert{
   background-color: #f7505a;
   position: absolute;
