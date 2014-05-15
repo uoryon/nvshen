@@ -54,6 +54,7 @@ exports.hg = function(req, res){
 }
 
 exports.up = function(req, res){
+  console.log('iwa');
   console.log(req.body);
   console.log(req.files);
   req.body.name = req.files.pic.name;
@@ -69,6 +70,7 @@ exports.up = function(req, res){
     if(girl){
       var eGirl = new Nvshen(girl);
       req.body.date = new Date().getTime();
+      console.log(req.body.date);
       eGirl.up(req.body, function(err, girl){
         console.log(err);
         if(err){
